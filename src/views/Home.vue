@@ -40,10 +40,10 @@
 
 <script>
 // @ is an alias to /src
-import InitScreen from '@/components/InitScreen.vue';
-import AllPlaylists from '@/components/AllPlaylists/AllPlaylists.vue';
+import InitScreen from '@/components/InitScreen.vue'
+import AllPlaylists from '@/components/AllPlaylists/AllPlaylists.vue'
 import SinglePlaylist from '@/components/SinglePlaylist/SinglePlaylist.vue'
-import axios from 'axios';
+import axios from 'axios'
 
 export default {
   name: 'home',
@@ -62,7 +62,7 @@ export default {
 
       // Spotify login information
       userId: 'AlexHandeland',
-      accessToken: 'BQCA0zrKQq0N2M01k9vVaDeFf9D9b5ZGoXylk95ZTpbWkSFUwz6zDzEWZd8bxs6RdheAD3OJjLwBy-r5thyoLAVKf8UqiHUqDVhB6Ylt9n7CdSLlFCrU20k_49XKRhVnVzrhWbBgAAbKdMDiHhnbjuw0ahj79tIYRmPrQA',
+      accessToken: 'BQABt_0od7gjUv59LuF-NoiGbW-lfH0uaOj4neYqoxQHkN8ZxH8IvSWN8b3X-ri_MiTHbdhBjS_pGZIvtwPlP92TEjRiBW_0NeHYYiJ3_OH5wBMEwpLAn8HOBddvNZ6_BzvKhPwiZpAXcrZRAS3rDoyllaWM4NnevgsMWA',
 
       // Flags
       // Display flags
