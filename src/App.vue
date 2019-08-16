@@ -15,7 +15,8 @@ export default {
   },
   data() {
     return {
-      authenticated: false
+      authenticated: false,
+      myVariable: ''
     }
   },
   mounted() {

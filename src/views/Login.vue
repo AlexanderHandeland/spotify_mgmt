@@ -3,7 +3,7 @@
         <div id="login">
             <h1>Hello my fine man</h1>
             <p>Log in with your Spotify account</p>
-            <a class="a-button" href="https://spotify-mgmt-backend.herokuapp.com/login">Login v2</a>
+            <a class="a-button" href="https://spotify-mgmt-backend.herokuapp.com/login" @click="testFunc">Login v2</a>
             <!-- <GreenBtn id="login-button" v-on:button-click="login">Login</GreenBtn> -->
         </div>
     </div>
@@ -25,23 +25,13 @@ export default {
         }
     },
     methods: {
-        login() {
-            console.log('clicked login');
+        testFunc() {
+            // console.log(this.$route.query.test)
+            console.log(this.$route.query.a);
+            
             this.$emit("authenticated", true);
-
+            this.$emit("myVariable", this.$route.query.a);
             this.$router.replace( { name: "home" });
-            
-            
-            // window.open("https://spotify-mgmt-backend.herokuapp.com/login", "_blank"); 
-
-            axios.get('https://spotify-mgmt-backend.herokuapp.com/login')
-            .then(res => {
-                console.log(res.data);
-                // store to someVariable
-                // this.$emit(token);
-                // this.$router.replace( { name: "home" });
-            })
-            .catch(err => console.log(err));
         }
     }
 }
