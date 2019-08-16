@@ -2,19 +2,23 @@
     <div>
         <div>
             <h1>Find artist</h1>
-            
-            <input
-                class="input-artist"
-                type="text"
-                v-model="artistSearchField"
-                @keyup="$emit('update-artist-search', artistSearchField)"
-                @keyup.enter="$emit('search-for-artist')"
-                placeholder="Artist name"
-            >
+            <div class="find-artist-body">
+                <a>Search and select an artist from Spotify.</a> <br/>
+                <div class="input-search-div">
+                    <input
+                        class="input-artist"
+                        type="text"
+                        v-model="artistSearchField"
+                        @keyup="$emit('update-artist-search', artistSearchField)"
+                        @keyup.enter="$emit('search-for-artist')"
+                        placeholder="Artist name"
+                    >
 
-            <GreenBtn
-                v-on:button-click="$emit('search-for-artist')"
-            >Search</GreenBtn>
+                    <GreenBtn
+                        v-on:button-click="$emit('search-for-artist')"
+                    >Search</GreenBtn>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -38,9 +42,14 @@ export default {
 </script>
 
 
-<style scoped>
-    h1 {
-        padding-bottom: 10px;
+<style scoped>    
+    .find-artist-body {
+        padding: 10px;
+        margin-left: 10px;
+    }
+
+    .input-search-div {
+        padding: 10px 0;
     }
 
     .input-artist {
@@ -49,15 +58,11 @@ export default {
         border-bottom: 1px solid #fff;
         color: white;
         width: 220px;
-        padding: 10px;
-        margin: 10px;
-        /* text-align: center; */
         font-size: 10px;
         letter-spacing: 2px;
         text-transform: uppercase;
         user-select: none;
-        /* display: inline-block; */
-        /* cursor: pointer; */
+        padding: 10px;
     }
 
     .input-artist::placeholder {

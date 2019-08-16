@@ -1,10 +1,8 @@
 <template>
 <!-- implement better select artist functionality
     kravspesifiser først -->
-    <div
-        v-bind:class="{ 'artist-item': true, 'artist-selected': artistSelected }"
-        @click="$emit('select-artist', artist.id); artistSelected = !artistSelected"
-    >
+    <div 
+        class='artist-item' @click="$emit('select-artist', artist.id);">
         <ul>
             <li>
                 {{ artist.name }}
@@ -18,11 +16,6 @@
 export default {
     name: 'ArtistItem',
     props: ['artist'],
-    data() {
-        return {
-            artistSelected: false
-        }
-    }
 }
 </script>
 
@@ -46,11 +39,9 @@ export default {
         width: 50%;
         text-align: left;
         font-size: 14px;
-        color: white;
     }
-
-    .artist-selected {
+    
+    .selected {
         background: var(--spotify-dark-green);
     }
-
 </style>

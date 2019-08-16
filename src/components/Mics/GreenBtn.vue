@@ -13,7 +13,6 @@ export default {
 
 
 <style scoped>
-
     .green-button {
         background-color: var(--spotify-dark-green);
         border: none;

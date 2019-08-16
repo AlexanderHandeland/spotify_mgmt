@@ -1,7 +1,8 @@
 <template>
     <div class="main-div">
         <div id="login">
-            <h1>Hello my fine man</h1>
+            <!-- <h1>Hello my fine man</h1> -->
+            <h2>Hello My Man</h2>
             <p>Log in with your Spotify account</p>
             <a class="a-button" href="https://spotify-mgmt-backend.herokuapp.com/login" @click="testFunc">Login</a>
             <!-- <GreenBtn id="login-button" v-on:button-click="login">Login</GreenBtn> -->
@@ -40,24 +41,34 @@ export default {
         appearance: button;
 
         text-decoration: none;
-
-        background-color: var(--spotify-dark-green);
         border: none;
-        color: white;
+        outline: none;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 20px;
+
+
+        background: var(--spotify-dark-green);
+        /* border: none; */
+        /* color: white; */
         padding: 10px;
         margin: 10px 0;
         text-align: center;
-        font-size: 10px;
+        /* font-size: 10px; */
         letter-spacing: 2px;
         text-transform: uppercase;
         user-select: none;
         /* display: inline-block; */
         cursor: pointer;
-        width: inherit;
+        width: 100%;
+    }
+
+    .a-button:hover {
+        background: var(--spotify-green);
     }
 
     .main-div {
-        /* text-align: center; */
+        text-align: center;
         color: white;
         margin: 0;
         padding: 0;
@@ -66,29 +77,21 @@ export default {
     }
 
     #login {
+        /* background: var(--playlist-backdrop-gray); */
+        border: 2px solid var(--playlist-hover-gray);
+        border-radius: 20px;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        width: 300px;
-        height: 420px;
+        width: 350px;
+        height: 280px;
         padding: 80px 40px;
         box-sizing: border-box;
-        /* background: rgba(0,0,0,.5); */
-        background: var(--spotify-backdrop-gray);
-        /* text-align: center;
-        display: inline-block;
-        color: white;
-        height: 200px;
-        margin: 50%;
-        margin: 10%;
-        padding: 10px;
-        width: 20%;
-        border-radius: 10px;
-        background: var(--playlist-backdrop-gray); */
     }
 
-    #login-button {
-        margin: 40px 0px;
+    h2, p {
+        margin: 0;
+        padding: 0 0 20px;
     }
 </style>

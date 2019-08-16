@@ -1,11 +1,6 @@
 <template>
     <div class="chrono">
-        <a>API here: </a><a href="https://developer.spotify.com/documentation/web-api/reference/artists/get-artists-albums/">link</a>
-
         <div class="search-div" v-if="searchDivFlag">
-
-            <!-- remove htis when done -->
-            <!-- <p style="user-select:text">E.g: Beyond the Wizards Sleeve: spotify:artist:0DGGWrQLqX2Bli5KOPchgY</p> -->
 
         <div class="find-artist-div">
             <SearchArtistComponent
@@ -55,7 +50,7 @@ import SearchArtistComponent from '@/components/Chronologify/SearchArtistCompone
 import SearchArtistResultsComponent from '@/components/Chronologify/SearchArtistResultsComponent.vue'
 import GreenBtn from '@/components/Mics/GreenBtn.vue'
 
-import axios from 'axios';
+import axios from 'axios'
 import { timingSafeEqual } from 'crypto';
 
 
@@ -70,9 +65,6 @@ export default {
     },
     data() {
         return {
-            // move token to app.vue or global data file
-            accessToken: 'BQB0dS_Ri_XVS3S1Yj5IFBaDf3IPmOz2gndH6Sv3_fivPVvIgiVNxidJaVXHruqS6XnBM6-rVvODzGKDXcx_kabUfIPFmo_xjidI0p51maNUu3Ex51ZCTHgiu5OL5PghZJ4i_p1WgB2l9EfxVN8SCTFnFniurVtg77MFiw',
-
             // Search info
             artistName: '',
             artistId: '',
@@ -115,7 +107,7 @@ export default {
             if (this.artistName != '') {
                 axios.get('https://api.spotify.com/v1/search', {
                     headers: {
-                    Authorization: 'Bearer ' + this.accessToken
+                    Authorization: 'Bearer ' + this.$parent.$data.token
                     },
                     params: {
                         'q': this.artistName,
@@ -133,6 +125,7 @@ export default {
 
         selectArtist: function(id) {
             this.artistId = id;
+            console.log('Selected ID: ' + id);
         },
 
         updateIncludeGroups: function(albumType, flag) {
@@ -172,7 +165,7 @@ export default {
                 // API request with headers (and parameters)
                 axios.get('https://api.spotify.com/v1/artists/' + this.artistId + '/albums', {
                     headers: {
-                    Authorization: 'Bearer ' + this.accessToken
+                    Authorization: 'Bearer ' + this.$parent.$data.token
                     },
                     params: {
                         // IMPLEMENT THIS IN A BETTER WAY!!
@@ -216,7 +209,7 @@ export default {
         testFunc: function(href) {
             axios.get(href, {
                 headers: {
-                    Authorization: 'Bearer ' + this.accessToken
+                    Authorization: 'Bearer ' + this.$parent.$data.token
                 },
                     params: {
                 }
@@ -278,10 +271,4 @@ export default {
     .search-artist-button:focus {
         outline-color: white;
     }
-
-    .find-artist-div {
-        /* width: 35%; */
-    }
-
-
 </style>

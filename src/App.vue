@@ -2,21 +2,25 @@
   <div id="app">
     <Header v-if="authenticated" />
     <router-view @authenticated="setAuthenticated" />
+    <Footer v-if="authenticated" />
   </div>
 </template>
 
 <script>
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 export default {
   name: "app",
   components: {
-    Header
+    Header,
+    Footer
   },
   data() {
     return {
-      authenticated: false,
-      myVariable: ''
+      authenticated: true,
+      userId: 'AlexHandeland',
+      token: 'BQB8F9rkn9yrLIEjn3YjPLPaxfP6_puY-LDaptSUOIAeQRw9b_DR6CSxNMsAQOXqhw7MKhKBKcf1vhg0-xy2-S1w7pPUtlQBZCy5WUTBBvvoMLZOsLELroCrcvOpjxOybqp37TbVx1x5VIwutvJa5YHXOWD0TlFwKCItRA'
     }
   },
   mounted() {
@@ -40,14 +44,16 @@ export default {
 
   * {
     box-sizing: border-box;
-    margin: 0;
+    margin: 0px;
     padding: 0;
   }
 
   body {
+    /* background: var(--spotify-black); */
     background: black;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.4;
+    margin-top: 30px;
   }
 
 /* scrollbar css */

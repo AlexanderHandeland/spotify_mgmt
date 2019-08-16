@@ -1,11 +1,8 @@
 <template>
-    <header class="header"> 
+    <header class="footer"> 
 
         <div id="nav">
-            <a title="Logo placeholder">&#9889;</a>
-            <router-link to="/home">Spotify Mgmt</router-link>
-            <router-link to="/chronologify">Chronologify</router-link>
-            <router-link to="/about">About</router-link>
+            <a>Logged in as <span style="font-weight: bold">{{ this.$parent.$data.userId}} </span></a>
         </div>
 
     </header>
@@ -13,32 +10,32 @@
 
 <script>
 export default {
-    name: "Header"
+    name: "Footer"
 }
 </script>
 
 <style scoped>
-    .header {
-        background: black;
+    .footer {
         color: white;
         overflow: hidden;
         position: fixed;
-        top: 0;
+        bottom: 0;
+        right: 0;
         width: 100%;
         border-bottom: 2px solid var(--playlist-hover-gray);
     }
 
-    .header a {
-        float: left;
+    .footer a {
+        float: right;
         display: block;
         color: white;
-        text-align: center;
+        text-align: right;
         padding: 14px 16px;
         text-decoration: none;
-        font-size: 12px;
+        font-size: 10px;
         
         /* font-size: 10px; */
-        letter-spacing: 2px;
+        /* letter-spacing: 2px; */
         text-transform: uppercase;
     }
     

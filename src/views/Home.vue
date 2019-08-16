@@ -28,10 +28,9 @@
         v-if="singlePlaylistFlag"
       />
 
-      <div class="info-text-field" v-if="initScreenFlag || allPlaylistsFlag">
+      <!-- <div class="info-text-field" v-if="initScreenFlag || allPlaylistsFlag">
             <p>You are logged in as </p> <p style="font-weight:bold"> AlexHandeland </p>
-      </div>
-
+      </div> -->
     </div> 
   </div>
 
@@ -43,6 +42,7 @@
 import InitScreen from '@/components/InitScreen.vue'
 import AllPlaylists from '@/components/AllPlaylists/AllPlaylists.vue'
 import SinglePlaylist from '@/components/SinglePlaylist/SinglePlaylist.vue'
+
 import axios from 'axios'
 
 export default {
@@ -59,10 +59,6 @@ export default {
       playlistTitle: '',
       loadedTracksCounter: 0,
       nextUrl: '',
-
-      // Spotify login information
-      userId: 'AlexHandeland',
-      accessToken: 'BQABt_0od7gjUv59LuF-NoiGbW-lfH0uaOj4neYqoxQHkN8ZxH8IvSWN8b3X-ri_MiTHbdhBjS_pGZIvtwPlP92TEjRiBW_0NeHYYiJ3_OH5wBMEwpLAn8HOBddvNZ6_BzvKhPwiZpAXcrZRAS3rDoyllaWM4NnevgsMWA',
 
       // Flags
       // Display flags
@@ -81,9 +77,10 @@ export default {
   methods: {
     getAllPlaylists: function() {      
       // API call to get all playlists of user
-      axios.get('https://api.spotify.com/v1/users/' + this.userId + '/playlists', {
+      axios.get('https://api.spotify.com/v1/users/' + this.$parent.$data.userId + '/playlists', {
           headers: {
-              Authorization: 'Bearer ' + this.accessToken
+              // Authorization: 'Bearer ' + this.accessToken
+              Authorization: 'Bearer ' + this.$parent.$data.token
           }
       })
       .then(res => { 
@@ -102,7 +99,7 @@ export default {
       // API request with headers (and parameters)
       axios.get('https://api.spotify.com/v1/playlists/' + id + '/tracks', {
         headers: {
-          Authorization: 'Bearer ' + this.accessToken
+          Authorization: 'Bearer ' + this.$parent.$data.token
         },
         params: {
 
@@ -138,7 +135,7 @@ export default {
 
       axios.get(this.nextUrl, {
         headers: {
-          Authorization: 'Bearer ' + this.accessToken
+          Authorization: 'Bearer ' + this.$parent.$data.token
         }
       })
         .then(res => {
@@ -175,12 +172,11 @@ export default {
     },
 
     saveToFile: function() {
-      console.log('clicked and emitted tohome');
       var filename = this.playlistTitle;
 
       // fetch data for file
       var data = 'Export of playlist from Spotify \r\n\r\n' +
-        'User name\t\t\t' + this.userId + '\r\n' +
+        'User name\t\t\t' + this.$parent.$data.userId + '\r\n' +
         'Playlist name\t\t\t' + filename + '\r\n' +
         'Songs available in playlist\t' + this.totalTracksInPlaylist + '\r\n' +
         'Songs exported to file\t\t' + this.loadedTracksCounter + '\r\n' + 
