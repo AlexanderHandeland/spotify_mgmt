@@ -27,6 +27,8 @@ export default {
   methods: {
     setAuthenticated(status) {
       this.authenticated = status;
+      console.log(this.$route.query.a);
+      this.myVariable = this.$route.query.a;
     }
   }
 }

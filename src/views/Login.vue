@@ -3,7 +3,7 @@
         <div id="login">
             <h1>Hello my fine man</h1>
             <p>Log in with your Spotify account</p>
-            <a class="a-button" href="https://spotify-mgmt-backend.herokuapp.com/login" @click="testFunc">Login v2</a>
+            <a class="a-button" href="https://spotify-mgmt-backend.herokuapp.com/login" @click="testFunc">Login</a>
             <!-- <GreenBtn id="login-button" v-on:button-click="login">Login</GreenBtn> -->
         </div>
     </div>
@@ -25,12 +25,8 @@ export default {
         }
     },
     methods: {
-        testFunc() {
-            // console.log(this.$route.query.test)
-            console.log(this.$route.query.a);
-            
+        testFunc() {      
             this.$emit("authenticated", true);
-            this.$emit("myVariable", this.$route.query.a);
             this.$router.replace( { name: "home" });
         }
     }
@@ -44,7 +40,20 @@ export default {
         appearance: button;
 
         text-decoration: none;
-        color: black;
+
+        background-color: var(--spotify-dark-green);
+        border: none;
+        color: white;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: center;
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        user-select: none;
+        /* display: inline-block; */
+        cursor: pointer;
+        width: inherit;
     }
 
     .main-div {
@@ -61,11 +70,12 @@ export default {
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        width: 350px;
+        width: 300px;
         height: 420px;
         padding: 80px 40px;
         box-sizing: border-box;
-        background: rgba(0,0,0,.5);
+        /* background: rgba(0,0,0,.5); */
+        background: var(--spotify-backdrop-gray);
         /* text-align: center;
         display: inline-block;
         color: white;

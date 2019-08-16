@@ -7,6 +7,7 @@ import Chronologify from './views/Chronologify.vue'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
