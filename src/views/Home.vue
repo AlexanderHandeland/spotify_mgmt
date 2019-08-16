@@ -62,7 +62,7 @@ export default {
 
       // Spotify login information
       userId: 'AlexHandeland',
-      accessToken: 'BQDEAKNniI_LAFP83WiNrdjtAl5JCIN5VTHM__7x9oDvF7CVF-QbxGrKUoAweE6FvPV2yc1ih2ImEXQdvRa-LPOV7XRLj2dLvWoXd-mdPo9faPy7cYPKHyse4mhA_FJp0gGlfxKo_Kgu-k_bbOpB5Sjf8AgheAbwx3Z7eg',
+      accessToken: 'BQCA0zrKQq0N2M01k9vVaDeFf9D9b5ZGoXylk95ZTpbWkSFUwz6zDzEWZd8bxs6RdheAD3OJjLwBy-r5thyoLAVKf8UqiHUqDVhB6Ylt9n7CdSLlFCrU20k_49XKRhVnVzrhWbBgAAbKdMDiHhnbjuw0ahj79tIYRmPrQA',
 
       // Flags
       // Display flags
@@ -81,7 +81,7 @@ export default {
   methods: {
     getAllPlaylists: function() {      
       // API call to get all playlists of user
-      axios.get('https://api.spotify.com/v1/users/' + this.userId +  '/playlists', {
+      axios.get('https://api.spotify.com/v1/users/' + this.userId + '/playlists', {
           headers: {
               Authorization: 'Bearer ' + this.accessToken
           }

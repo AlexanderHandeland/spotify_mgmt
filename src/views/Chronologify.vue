@@ -5,23 +5,33 @@
         <div class="search-div" v-if="searchDivFlag">
 
             <!-- remove htis when done -->
-            <p style="user-select:text">E.g: Beyond the Wizards Sleeve: spotify:artist:0DGGWrQLqX2Bli5KOPchgY</p>
+            <!-- <p style="user-select:text">E.g: Beyond the Wizards Sleeve: spotify:artist:0DGGWrQLqX2Bli5KOPchgY</p> -->
 
-            <ArtistIdComponent
-                v-on:update-input-artist-id="updateInputArtistId"
-                v-on:toggle-show-image="toggleShowImage"
-                v-bind:displayImage="displayImage"
-                v-bind:imageNone="imageNone"
-                v-bind:imageArtistId="imageArtistId"
+        <div class="find-artist-div">
+            <SearchArtistComponent
+                v-on:update-artist-search="updateArtistSearch"
+                v-on:search-for-artist="searchForArtist"
             />
+
+            <SearchArtistResultsComponent
+                v-bind:artistsResult="artistsResult"
+                v-on:select-artist="selectArtist"
+            />
+
+            <!-- <ArtistItem
+                v-bind=
+                v-if="artistIsSelected"
+            /> -->
+        </div>
 
             <AlbumTypesComponent
                 v-on:update-include-groups="updateIncludeGroups"
             />
 
             <h1>Search</h1>
-            
-            <button class="search-artist-button" @click="searchArtist">Search</button>
+            <GreenBtn v-on:button-click="searchArtist">Search</GreenBtn>
+
+            <!-- <button class="search-artist-button" @click="searchArtist">Search</button> -->
         
         </div>
 
@@ -39,32 +49,38 @@
 </template>
 
 <script>
-import ArtistIdComponent from '@/components/Chronologify/ArtistId.vue'
 import AlbumTypesComponent from '@/components/Chronologify/AlbumTypes.vue'
 import AlbumResults from '@/components/Chronologify/AlbumResults.vue'
-
-import imageArtistId from "@/assets/artistidhelp.png";
+import SearchArtistComponent from '@/components/Chronologify/SearchArtistComponent.vue'
+import SearchArtistResultsComponent from '@/components/Chronologify/SearchArtistResultsComponent.vue'
+import GreenBtn from '@/components/Mics/GreenBtn.vue'
 
 import axios from 'axios';
+import { timingSafeEqual } from 'crypto';
 
 
 export default {
     name: 'chronologify',
     components: {
-        ArtistIdComponent,
+        SearchArtistComponent,
+        SearchArtistResultsComponent,
         AlbumTypesComponent,
-        AlbumResults
+        AlbumResults,
+        GreenBtn
     },
     data() {
         return {
+            // move token to app.vue or global data file
+            accessToken: 'BQB0dS_Ri_XVS3S1Yj5IFBaDf3IPmOz2gndH6Sv3_fivPVvIgiVNxidJaVXHruqS6XnBM6-rVvODzGKDXcx_kabUfIPFmo_xjidI0p51maNUu3Ex51ZCTHgiu5OL5PghZJ4i_p1WgB2l9EfxVN8SCTFnFniurVtg77MFiw',
+
             // Search info
+            artistName: '',
             artistId: '',
 
-            // move token to app.vue or global data file
-            accessToken: 'BQD5_PjHNkSHbgsCEhP-tWIa7l3nLwU1L1O59b7Xb-2K1aSX8G2iVPwDu30nileIPhrg__vI4sDlDmSExFRp2DfGyfB5f10Se8C1zLiBLwsmJkGlXT0POKyPseKzVc2wByGltf9fsaTaHdDqXwbGz4B0ChM20d631PB6_Q',
-
+            // Artist search result
+            artistsResult: [],
+            
             // Artist and album info
-            artistName: '',
             albums: [],
             songsInAlbum: [],
             albumsLoadedCounter: 0,
@@ -74,11 +90,6 @@ export default {
             // Assumes all album types are checked on default
             includeGroupsArr: ['album', 'single', 'appears_on', 'compilation'],
             includeGroups: '',
-
-            // Artist id image data
-            displayImage: '',
-            imageNone: '',
-            imageArtistId: imageArtistId,
 
             // View flags
             searchDivFlag: true,
@@ -91,7 +102,36 @@ export default {
             this.resultsDivFlag = !this.searchDivFlag;
         },
 
-        updateInputArtistId: function(id) {
+        updateArtistSearch: function(param) {
+            this.artistName = param;
+            // code for URL-encoding
+        },
+
+        searchForArtist: function() {
+            // Reset variables (make this a function?)
+            this.artistsResult = [];
+            this.artistId = '';
+
+            if (this.artistName != '') {
+                axios.get('https://api.spotify.com/v1/search', {
+                    headers: {
+                    Authorization: 'Bearer ' + this.accessToken
+                    },
+                    params: {
+                        'q': this.artistName,
+                        'type': 'artist'
+                    }
+                })
+                .then(res => this.artistsResult = res.data.artists.items)
+                .catch(err => console.log(err))
+            }
+            else {
+                console.log('Error: artist name can\'t be null')
+            }
+            
+        },
+
+        selectArtist: function(id) {
             this.artistId = id;
         },
 
@@ -237,6 +277,10 @@ export default {
 
     .search-artist-button:focus {
         outline-color: white;
+    }
+
+    .find-artist-div {
+        /* width: 35%; */
     }
 
 

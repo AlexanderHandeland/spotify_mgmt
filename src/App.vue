@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header />
-    <router-view/>
+    <Header v-if="authenticated" />
+    <router-view @authenticated="setAuthenticated" />
   </div>
 </template>
 
@@ -12,6 +12,21 @@ export default {
   name: "app",
   components: {
     Header
+  },
+  data() {
+    return {
+      authenticated: false
+    }
+  },
+  mounted() {
+    if(!this.authenticated) {
+      this.$router.replace({ name: "login" });
+    }
+  },
+  methods: {
+    setAuthenticated(status) {
+      this.authenticated = status;
+    }
   }
 }
 </script>
