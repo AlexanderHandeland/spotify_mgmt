@@ -3,10 +3,10 @@
   <div class="home">
     <div class="main-content-div">
       
-      <InitScreen
+      <!-- <InitScreen
         v-on:get-all-playlists="getAllPlaylists"
         v-if="initScreenFlag"
-      />
+      /> -->
 
       <AllPlaylists
         v-bind:playlists="playlists"
@@ -75,25 +75,25 @@ export default {
     }
   },
   methods: {
-    getAllPlaylists: function() {      
-      // API call to get all playlists of user
-      axios.get('https://api.spotify.com/v1/users/' + this.$parent.$data.userId + '/playlists', {
-          headers: {
-              // Authorization: 'Bearer ' + this.accessToken
-              Authorization: 'Bearer ' + this.$parent.$data.token
-          }
-      })
-      .then(res => { 
-        // Code for successful API request
-        this.playlists = res.data.items;
+    // getAllPlaylists: function() {      
+    //   // API call to get all playlists of user
+    //   axios.get('https://api.spotify.com/v1/users/' + this.$parent.$data.userId + '/playlists', {
+    //       headers: {
+    //           // Authorization: 'Bearer ' + this.accessToken
+    //           Authorization: 'Bearer ' + this.$parent.$data.token
+    //       }
+    //   })
+    //   .then(res => { 
+    //     // Code for successful API request
+    //     this.playlists = res.data.items;
 
-        // Set front-end view flags
-        this.initScreenFlag = false;
-        this.allPlaylistsFlag = true;
-        this.singlePlaylistFlag = false;
-        })
-      .catch(err => console.log(err));
-    },
+    //     // Set front-end view flags
+    //     this.initScreenFlag = false;
+    //     this.allPlaylistsFlag = true;
+    //     this.singlePlaylistFlag = false;
+    //     })
+    //   .catch(err => console.log(err));
+    // },
 
     getSinglePlaylist: function(id, name) {
       // API request with headers (and parameters)
@@ -256,6 +256,26 @@ export default {
       // Toggle flag
       this.sortByArtistFlag = !this.sortByArtistFlag;
     }
+  },
+
+  mounted() {   
+    // API call to get all playlists of user
+    axios.get('https://api.spotify.com/v1/users/' + this.$parent.$data.userId + '/playlists', {
+        headers: {
+            // Authorization: 'Bearer ' + this.accessToken
+            Authorization: 'Bearer ' + this.$parent.$data.token
+        }
+    })
+    .then(res => { 
+      // Code for successful API request
+      this.playlists = res.data.items;
+
+      // Set front-end view flags
+      this.initScreenFlag = false;
+      this.allPlaylistsFlag = true;
+      this.singlePlaylistFlag = false;
+      })
+    .catch(err => console.log(err));
   }
 }
 </script>

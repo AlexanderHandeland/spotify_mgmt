@@ -27,6 +27,8 @@ export default {
     },
     methods: {
         testFunc() {      
+            // EDIT
+            // authenticated = true must happen after being 
             this.$emit("authenticated", true);
             this.$router.replace( { name: "home" });
         }
@@ -79,7 +81,7 @@ export default {
     #login {
         /* background: var(--playlist-backdrop-gray); */
         border: 2px solid var(--playlist-hover-gray);
-        border-radius: 20px;
+        border-radius: 10px;
         position: absolute;
         top: 50%;
         left: 50%;

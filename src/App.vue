@@ -18,9 +18,9 @@ export default {
   },
   data() {
     return {
-      authenticated: true,
+      authenticated: false,
       userId: 'AlexHandeland',
-      token: 'BQB8F9rkn9yrLIEjn3YjPLPaxfP6_puY-LDaptSUOIAeQRw9b_DR6CSxNMsAQOXqhw7MKhKBKcf1vhg0-xy2-S1w7pPUtlQBZCy5WUTBBvvoMLZOsLELroCrcvOpjxOybqp37TbVx1x5VIwutvJa5YHXOWD0TlFwKCItRA'
+      token: 'BQBs-ppRH18cTwbptgE32BLJRknPgtEXU1NC0amfQN7Fq1F90YVUTzbpYM0Xqo9TarWivaZw7RaLJd0g56cBxqs3-m_zs2Zk7kfmostNcaVVlPnBlbsO8V21qcFQ_jT0RISFuNdr6XvB23LNWJXpyYZXwcNhnWx1Iuu0eA'
     }
   },
   mounted() {

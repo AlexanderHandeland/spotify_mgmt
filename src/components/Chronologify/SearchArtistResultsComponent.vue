@@ -17,7 +17,7 @@ export default {
     components: {
         ArtistItem
     },
-    props: ['artistsResult']
+    props: ['artistsResult', 'artistSelected' ]
 }
 </script>
 

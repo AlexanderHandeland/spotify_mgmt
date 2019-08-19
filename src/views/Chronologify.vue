@@ -38,16 +38,19 @@
                 v-bind:songsInAlbum="songsInAlbum"
                 v-on:show-songs-of-album="testFunc"
             />
+
+            <ChronologifyFooter />
         </div>
                    
     </div>
 </template>
 
 <script>
-import AlbumTypesComponent from '@/components/Chronologify/AlbumTypes.vue'
-import AlbumResults from '@/components/Chronologify/AlbumResults.vue'
-import SearchArtistComponent from '@/components/Chronologify/SearchArtistComponent.vue'
-import SearchArtistResultsComponent from '@/components/Chronologify/SearchArtistResultsComponent.vue'
+import AlbumTypesComponent from '@/components/Chronologify/AlbumTypes'
+import AlbumResults from '@/components/Chronologify/AlbumResults'
+import SearchArtistComponent from '@/components/Chronologify/SearchArtistComponent'
+import SearchArtistResultsComponent from '@/components/Chronologify/SearchArtistResultsComponent'
+import ChronologifyFooter from '@/components/Chronologify/ChronologifyFooter'
 import GreenBtn from '@/components/Mics/GreenBtn.vue'
 
 import axios from 'axios'
@@ -61,9 +64,10 @@ export default {
         SearchArtistResultsComponent,
         AlbumTypesComponent,
         AlbumResults,
+        ChronologifyFooter,
         GreenBtn
     },
-    data() {
+    data() {    
         return {
             // Search info
             artistName: '',

@@ -1,7 +1,7 @@
 <template>
     <div class="album-item">
        <ul>
-            <li class="album-title" @click="$emit('show-songs-of-album', album.href)"> 
+            <li class="album-title" @click="$emit('show-songs-of-album', album.href), showInfo = !showInfo"> 
                 {{ album.name }}
             </li>
 
@@ -13,6 +13,8 @@
                     <!-- <li v-bind:key="songInAlbumTest.id" v-for="songInAlbumTest in songsInAlbumTest">
                         <SongInAlbum v-bind:songInAlbumTest="songInAlbumTest" />
                     </li> -->
+                    <!-- <li>&#9746;
+                        </li> -->
                 </ul> 
             </div>  
 
@@ -67,6 +69,19 @@ export default {
 </script>
 
 <style scoped>
+    .album-item {
+        list-style-type: none;
+        display: inline-block;
+    }
+
+    /* .album-item li:nth-child(1) {
+        width: 30%
+    } */
+
+    /* .album-item li:nth-child(2) {
+        width: 10%
+    } */
+
    .album-item {
         background-color: var(--spotify-dark-green);
         /* padding: 6px 8px; */
