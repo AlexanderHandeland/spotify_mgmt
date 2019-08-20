@@ -19,20 +19,22 @@ export default {
   data() {
     return {
       authenticated: false,
+      loggingIn: false,
       userId: 'AlexHandeland',
-      token: 'BQBs-ppRH18cTwbptgE32BLJRknPgtEXU1NC0amfQN7Fq1F90YVUTzbpYM0Xqo9TarWivaZw7RaLJd0g56cBxqs3-m_zs2Zk7kfmostNcaVVlPnBlbsO8V21qcFQ_jT0RISFuNdr6XvB23LNWJXpyYZXwcNhnWx1Iuu0eA'
+      token: 'BQA8g0aumUeTiKf6zO2oUVFWY6Motue7Lb2Lx0jVSljpVNqnzJGFNmTs1aEoQf6JLTaSFDI116LX12nCBxYGoqpQ_pCFZjfjH2OdyXMEMN19TOC9OudEeF4vGD2lhg9HxwFp-iKk3y530FKO_Jlbv_5bgzuopGt6l1kfrQ'
     }
   },
   mounted() {
     if(!this.authenticated) {
       this.$router.replace({ name: "login" });
     }
+    if(this.loggingIn) {
+      this.$router.replace({ name: 'token' });
+    }
   },
   methods: {
     setAuthenticated(status) {
       this.authenticated = status;
-      console.log(this.$route.query.a);
-      this.myVariable = this.$route.query.a;
     }
   }
 }

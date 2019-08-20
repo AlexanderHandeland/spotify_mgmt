@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './views/Login.vue'
+import Token from './views/Token.vue'
 import Home from './views/Home.vue'
 import Chronologify from './views/Chronologify.vue'
 
@@ -18,6 +19,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/token',
+      name: 'token',
+      component: Token
     },
     {
       path: '/home',

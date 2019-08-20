@@ -1,47 +1,45 @@
 <template>
     <div class="chrono">
-        <div class="search-div" v-if="searchDivFlag">
+        <div class="main-content-div">
+            <div class="search-div" v-if="searchDivFlag">
 
-        <div class="find-artist-div">
-            <SearchArtistComponent
-                v-on:update-artist-search="updateArtistSearch"
-                v-on:search-for-artist="searchForArtist"
-            />
+                <div class="find-artist-div">
+                    <SearchArtistComponent
+                        v-on:update-artist-search="updateArtistSearch"
+                        v-on:search-for-artist="searchForArtist"
+                    />
 
-            <SearchArtistResultsComponent
-                v-bind:artistsResult="artistsResult"
-                v-on:select-artist="selectArtist"
-            />
+                    <SearchArtistResultsComponent
+                        v-bind:artistsResult="artistsResult"
+                        v-on:select-artist="selectArtist"
+                    />
 
-            <!-- <ArtistItem
-                v-bind=
-                v-if="artistIsSelected"
-            /> -->
-        </div>
+                </div>
 
-            <AlbumTypesComponent
-                v-on:update-include-groups="updateIncludeGroups"
-            />
+                <AlbumTypesComponent
+                    v-on:update-include-groups="updateIncludeGroups"
+                />
 
-            <h1>Search</h1>
-            <GreenBtn v-on:button-click="searchArtist">Search</GreenBtn>
+                <h1>Search</h1>
+                <GreenBtn v-on:button-click="searchArtist">Search</GreenBtn>
 
-            <!-- <button class="search-artist-button" @click="searchArtist">Search</button> -->
+                <!-- <button class="search-artist-button" @click="searchArtist">Search</button> -->
+            
+            </div>
+
         
-        </div>
+            <div class="results-div" v-if="resultsDivFlag">
+                <ChronologifyHeader v-bind:artistName="artistName"/>
 
-    
-        <div class="results-div" v-if="resultsDivFlag">
-            <AlbumResults 
-                v-bind:artistId="artistId"
-                v-bind:albums="albums"
-                v-bind:songsInAlbum="songsInAlbum"
-                v-on:show-songs-of-album="testFunc"
-            />
+                <AlbumResults 
+                    v-bind:artistId="artistId"
+                    :artistName="artistName"
+                    v-bind:albums="albums"
+                />
 
-            <ChronologifyFooter />
-        </div>
-                   
+                <ChronologifyFooter />
+            </div>
+        </div> 
     </div>
 </template>
 
@@ -50,6 +48,7 @@ import AlbumTypesComponent from '@/components/Chronologify/AlbumTypes'
 import AlbumResults from '@/components/Chronologify/AlbumResults'
 import SearchArtistComponent from '@/components/Chronologify/SearchArtistComponent'
 import SearchArtistResultsComponent from '@/components/Chronologify/SearchArtistResultsComponent'
+import ChronologifyHeader from '@/components/Chronologify/ChronologifyHeader'
 import ChronologifyFooter from '@/components/Chronologify/ChronologifyFooter'
 import GreenBtn from '@/components/Mics/GreenBtn.vue'
 
@@ -64,6 +63,7 @@ export default {
         SearchArtistResultsComponent,
         AlbumTypesComponent,
         AlbumResults,
+        ChronologifyHeader,
         ChronologifyFooter,
         GreenBtn
     },
@@ -78,7 +78,6 @@ export default {
             
             // Artist and album info
             albums: [],
-            songsInAlbum: [],
             albumsLoadedCounter: 0,
             nextUrl: '',
 
@@ -127,8 +126,9 @@ export default {
             
         },
 
-        selectArtist: function(id) {
+        selectArtist: function(id, name) {
             this.artistId = id;
+            this.artistName = name;
             console.log('Selected ID: ' + id);
         },
 
@@ -172,8 +172,6 @@ export default {
                     Authorization: 'Bearer ' + this.$parent.$data.token
                     },
                     params: {
-                        // IMPLEMENT THIS IN A BETTER WAY!!
-                        // parameter: include_groups=album,single,appears_on,compilation
                         'include_groups': this.includeGroups
                     }
                 })
@@ -188,44 +186,6 @@ export default {
 
                     })
                     .catch(err => console.log(err));
-            // }
-        // }
-        // showSongsOfAlbum: function(href) {
-        // // API request with headers (and parameters)
-        // console.log('clicked');
-        //     axios.get(href, {
-        //         headers: {
-        //         Authorization: 'Bearer ' + this.accessToken
-        //         },
-        //         params: {
-        //         }
-        //     })
-        //         .then(res => {
-        //         // Code for successful API request
-                
-                
-        //         this.songsInAlbum = res.data;
-
-        //         console.log(this.songsInAlbum);
-        //         })
-        //         .catch(err => console.log(err));
-        },
-        testFunc: function(href) {
-            axios.get(href, {
-                headers: {
-                    Authorization: 'Bearer ' + this.$parent.$data.token
-                },
-                    params: {
-                }
-            })
-                .then(res => {
-                // Code for successful API request
-                
-                this.songsInAlbum = res.data.tracks.items;
-
-                console.log(this.songsInAlbum);
-                })
-                .catch(err => console.log(err));
         }
     },
     created() {
@@ -247,13 +207,7 @@ export default {
         /* border-bottom: 1px #ccc solid; */
     }
 
-    h1 {
-        padding-bottom: 10px;
-    }
-
     .search-div {
-        padding: 60px;
-        width: 80%;
         text-align: left;
     }
     
@@ -274,5 +228,10 @@ export default {
 
     .search-artist-button:focus {
         outline-color: white;
+    }
+
+    .main-content-div {
+        width: 1200px;
+        display: inline-block;
     }
 </style>

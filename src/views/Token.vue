@@ -1,34 +1,28 @@
 <template>
-    <div class="main-div">
-        <div id="login">
-            <!-- <h1>Hello my fine man</h1> -->
-            <h2>Hello My Man</h2>
-            <p>Log in with your Spotify account</p>
-            <a class="a-button" href="https://spotify-mgmt-backend.herokuapp.com/login" @click="getToken">Login</a>
+    <div id="main-div">
+        <div id="token">
+            <h2>Great</h2>
+            <p>Now log in here</p>
+            <a class="a-button" @click="loginMgmt">Proceed</a>
             <!-- <GreenBtn id="login-button" v-on:button-click="login">Login</GreenBtn> -->
         </div>
     </div>
 </template>
 
-<script>
-import GreenBtn from '@/components/Mics/GreenBtn.vue'
 
-import axios from 'axios'
+<script>
+import GreenBtn from '@/components/Mics/GreenBtn'
 
 export default {
-    name: 'Login',
-    components: {
-        GreenBtn
-    },
-    data() {
-        return {
-        }
-    },
+    name: 'Token',
     methods: {
-        getToken() {      
-            // EDIT
-            this.$emit("loggingIn", true);
-            this.$router.replace( { name: "token" });
+        loginMgmt: function() {
+            console.log(this.$route.query.code);
+            if(typeof(this.$route.query.code) !== 'undefined') {
+                this.$emit("token", this.$route.query.a);
+                this.$emit("authenticated", true);
+                this.$router.replace( { name: "home" });
+            }
         }
     }
 }
@@ -76,7 +70,7 @@ export default {
         font-family: sans-serif;
     }
 
-    #login {
+    #token {
         /* background: var(--playlist-backdrop-gray); */
         border: 2px solid var(--playlist-hover-gray);
         border-radius: 10px;
@@ -95,3 +89,4 @@ export default {
         padding: 0 0 20px;
     }
 </style>
+

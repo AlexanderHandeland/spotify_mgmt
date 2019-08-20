@@ -3,7 +3,7 @@
         <ul class="artist-results-list">
             <li v-bind:key="artist.id" v-for="artist in artistsResult">
                 <ArtistItem
-                    v-bind:artist="artist" v-on:select-artist="$emit('select-artist', artist.id)" />
+                    v-bind:artist="artist"  v-on:select-artist="selectArtist" v-bind:class="classObject" />
             </li>
         </ul>
     </div>
@@ -17,7 +17,24 @@ export default {
     components: {
         ArtistItem
     },
-    props: ['artistsResult', 'artistSelected' ]
+    props: ['artistsResult'],
+    data() {
+        return {
+            selectFlag: false
+        }
+    },
+    methods: {
+        selectArtist(id) {
+            this.selectFlag = !this.selectFlag;            
+        }
+    },
+    computed: {
+        classObject: function() {
+            return {
+                selected: this.selectFlag
+            }
+        }
+    }
 }
 </script>
 
@@ -32,7 +49,7 @@ export default {
         overflow: auto;
         max-width: 400px;
     }
-    
+
     .selected {
         background: var(--spotify-dark-green);
     }

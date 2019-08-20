@@ -1,8 +1,8 @@
 <template>
 <!-- implement better select artist functionality
     kravspesifiser først -->
-    <div 
-        class='artist-item' @click="$emit('select-artist', artist.id);">
+    <!-- <div class='artist-item' @click="$emit('select-artist', artist.id, artist.name);"> -->
+    <div class='artist-item' @click="$emit('select-artist', artist.id)" >
         <ul>
             <li>
                 {{ artist.name }}
@@ -15,7 +15,12 @@
 <script>
 export default {
     name: 'ArtistItem',
-    props: ['artist'],
+    props: ['artist', 'selectFlag'],
+    data() {
+        return {
+            // selectFlag: false
+        }
+    }
 }
 </script>
 
@@ -41,7 +46,7 @@ export default {
         font-size: 14px;
     }
     
-    .selected {
+    /* .selected {
         background: var(--spotify-dark-green);
-    }
+    } */
 </style>
