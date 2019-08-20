@@ -34,8 +34,9 @@ export default {
     }
   },
   methods: {
-    setAuthenticated(status) {
+    setAuthenticated(status, token) {
       this.authenticated = status;
+      this.token = token;
     }
   }
 }

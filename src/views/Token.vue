@@ -17,15 +17,11 @@ export default {
     name: 'Token',
     methods: {
         proceed: function() {
-            this.$emit("authenticated", true);
-            this.$emit("token", this.$route.query.a);
+            this.$emit('authenticated', true, this.$route.query.a);
             console.log(this.$route.query.a);
             this.$router.replace( { name: "home" });
             }
-        },
-    mounted() {
-        this.$emit("token", this.$route.query.a);
-    }
+        }
 }
 </script>
 
