@@ -21,7 +21,7 @@ export default {
       authenticated: false,
       loggingIn: false,
       userId: 'AlexHandeland',
-      token: 'BQA8g0aumUeTiKf6zO2oUVFWY6Motue7Lb2Lx0jVSljpVNqnzJGFNmTs1aEoQf6JLTaSFDI116LX12nCBxYGoqpQ_pCFZjfjH2OdyXMEMN19TOC9OudEeF4vGD2lhg9HxwFp-iKk3y530FKO_Jlbv_5bgzuopGt6l1kfrQ'
+      token: ''
     }
   },
   mounted() {

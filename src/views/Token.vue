@@ -3,7 +3,7 @@
         <div id="token">
             <h2>Great</h2>
             <p></p>
-            <a class="a-button" @click="loginMgmt">Proceed</a>
+            <a class="a-button" @click="proceed">Proceed</a>
             <!-- <GreenBtn id="login-button" v-on:button-click="login">Login</GreenBtn> -->
         </div>
     </div>
@@ -16,21 +16,13 @@ import GreenBtn from '@/components/Mics/GreenBtn'
 export default {
     name: 'Token',
     methods: {
-        loginMgmt: function() {
-            console.log(this.$route.query.a);
-            if(typeof(this.$route.query.a) !== 'undefined') {
-                this.$emit("token", this.$route.query.a);
-                // this.$emit("authenticated", true);
-                // this.$router.replace( { name: "home" });
-                console.log('clicked and valid');
+        proceed: function() {
+            this.$emit("authenticated", true);
+            this.$router.replace( { name: "home" });
             }
-        }
-    },
+        },
     mounted() {
-        console.log('mounted :' + this.$route.query.a);
         this.$emit("token", this.$route.query.a);
-        // this.$emit("authenticated", true);
-        // this.$router.replace( { name: "home" });
     }
 }
 </script>
@@ -48,18 +40,13 @@ export default {
         font-size: 16px;
         border-radius: 20px;
 
-
         background: var(--spotify-dark-green);
-        /* border: none; */
-        /* color: white; */
         padding: 10px;
         margin: 10px 0;
         text-align: center;
-        /* font-size: 10px; */
         letter-spacing: 2px;
         text-transform: uppercase;
         user-select: none;
-        /* display: inline-block; */
         cursor: pointer;
         width: 100%;
     }
