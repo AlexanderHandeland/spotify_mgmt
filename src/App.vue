@@ -26,11 +26,11 @@ export default {
   },
   mounted() {
     if(!this.authenticated) {
-      if(this.loggingIn) {
-        this.$router.replace({ name: 'token' });
-      } else {
+      // if(this.loggingIn) {
+      //   this.$router.replace({ name: 'token' });
+      // } else {
         this.$router.replace({ name: "login" });
-      }
+      // }
     }
   },
   methods: {

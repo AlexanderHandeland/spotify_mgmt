@@ -20,10 +20,17 @@ export default {
             console.log(this.$route.query.code);
             if(typeof(this.$route.query.code) !== 'undefined') {
                 this.$emit("token", this.$route.query.a);
-                this.$emit("authenticated", true);
-                this.$router.replace( { name: "home" });
+                // this.$emit("authenticated", true);
+                // this.$router.replace( { name: "home" });
+                console.log('clicked and valid');
             }
         }
+    },
+    mounted() {
+        console.log(this.$route.query.code);
+        this.$emit("token", this.$route.query.a);
+        // this.$emit("authenticated", true);
+        // this.$router.replace( { name: "home" });
     }
 }
 </script>

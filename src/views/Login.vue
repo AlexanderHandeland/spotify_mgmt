@@ -20,15 +20,10 @@ export default {
     components: {
         GreenBtn
     },
-    data() {
-        return {
-        }
-    },
     methods: {
-        getToken() {      
-            // EDIT
+        getToken() {
             this.$emit("loggingIn", true);
-            this.$router.replace( { name: "token" });
+            this.$router.replace({ name: "token" });
         }
     }
 }
