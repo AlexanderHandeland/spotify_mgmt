@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      authenticated: false,
+      authenticated: true,
       loggingIn: false,
       userId: 'AlexHandeland',
       token: ''

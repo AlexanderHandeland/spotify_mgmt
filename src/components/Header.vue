@@ -2,7 +2,7 @@
     <header class="header"> 
 
         <div id="nav">
-            <a title="Logo placeholder">&#9889;</a>
+            <a title="Logo placeholder" @click="verify">&#9889;</a>
             <router-link to="/home">Spotify Mgmt</router-link>
             <router-link to="/chronologify">Chronologify</router-link>
             <router-link to="/about">About</router-link>
@@ -13,7 +13,14 @@
 
 <script>
 export default {
-    name: "Header"
+    name: "Header",
+    methods: {
+        verify: function() {
+            console.log('clicked');
+            console.log(this.$parent.$data.userId);
+            console.log(this.$parent.$data.token);
+        }
+    }
 }
 </script>
 

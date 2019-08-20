@@ -18,6 +18,7 @@ export default {
     methods: {
         proceed: function() {
             this.$emit("authenticated", true);
+            this.$emit("token", this.$route.query.a);
             this.$router.replace( { name: "home" });
             }
         },
