@@ -1,8 +1,8 @@
 <template>
-    <div id="main-div">
+    <div class="main-div">
         <div id="token">
             <h2>Great</h2>
-            <p>Now log in here</p>
+            <p></p>
             <a class="a-button" @click="loginMgmt">Proceed</a>
             <!-- <GreenBtn id="login-button" v-on:button-click="login">Login</GreenBtn> -->
         </div>
