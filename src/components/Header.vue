@@ -17,6 +17,7 @@ export default {
     methods: {
         verify: function() {
             console.log('clicked');
+            console.log(this.$parent.$data.authenticated);
             console.log(this.$parent.$data.userId);
             console.log(this.$parent.$data.token);
         }
