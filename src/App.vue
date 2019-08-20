@@ -10,6 +10,8 @@
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import axios from 'axios'
+
 export default {
   name: "app",
   components: {
@@ -20,7 +22,7 @@ export default {
     return {
       authenticated: false,
       loggingIn: false,
-      userId: 'AlexHandeland',
+      userId: '',
       token: ''
     }
   },
@@ -37,6 +39,18 @@ export default {
     setAuthenticated(status, token) {
       this.authenticated = status;
       this.token = token;
+
+      axios.get('https://api.spotify.com/v1/me', {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      })
+        .then(res => {
+          // Code for successful API request
+          console.log(res.data);
+          this.userId = res.data.id;
+          })
+        .catch(err => console.log(err));
     }
   }
 }
