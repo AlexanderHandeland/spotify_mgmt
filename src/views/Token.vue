@@ -17,8 +17,8 @@ export default {
     name: 'Token',
     methods: {
         loginMgmt: function() {
-            console.log(this.$route.query.code);
-            if(typeof(this.$route.query.code) !== 'undefined') {
+            console.log(this.$route.query.a);
+            if(typeof(this.$route.query.a) !== 'undefined') {
                 this.$emit("token", this.$route.query.a);
                 // this.$emit("authenticated", true);
                 // this.$router.replace( { name: "home" });
@@ -27,7 +27,7 @@ export default {
         }
     },
     mounted() {
-        console.log(this.$route.query.code);
+        console.log('mounted :' + this.$route.query.a);
         this.$emit("token", this.$route.query.a);
         // this.$emit("authenticated", true);
         // this.$router.replace( { name: "home" });
