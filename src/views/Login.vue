@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         getToken() {
-            this.$emit("loggingIn", true);
+            this.$parent.$data.loggingIn = true;
         }
     }
 }

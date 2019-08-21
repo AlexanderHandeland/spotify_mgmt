@@ -38,15 +38,11 @@ export default {
       if(this.loggingIn) {
         this.$router.replace({ name: 'token' });
       } else {
-        this.$router.replace({ name: "login" });
+        this.$router.replace({ name: 'login' });
       }
     }
   },
   methods: {
-    setLoggingIn(status) {
-      this.loggingIn = status;
-    },
-
     setAuthenticated(status, token) {
       this.authenticated = status;
       this.token = token;
