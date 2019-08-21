@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         getToken() {
-            this.$parent.$data.loggingIn = true;
+            this.$router.replace({ name: 'token' });
         }
     }
 }

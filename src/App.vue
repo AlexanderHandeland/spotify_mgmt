@@ -24,7 +24,7 @@ export default {
       // Change to false/false/''/'' when done testing
 
       authenticated: false,
-      loggingIn: true,
+      loggingIn: false,
       userId: '',
       token: '',
 
