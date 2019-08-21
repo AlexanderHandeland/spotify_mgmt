@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from './views/Login.vue'
 import Token from './views/Token.vue'
 import Home from './views/Home.vue'
+import Playlist from './views/Playlist.vue'
 import Chronologify from './views/Chronologify.vue'
 
 Vue.use(Router)
@@ -29,6 +30,11 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/playlist/:id',
+      name: 'playlist',
+      component: Playlist
     },
     {
       path: '/chronologify',

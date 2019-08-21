@@ -44,6 +44,7 @@ export default {
         padding: 14px 16px;
         text-decoration: none;
         font-size: 12px;
+        user-select: none;
         
         /* font-size: 10px; */
         letter-spacing: 2px;

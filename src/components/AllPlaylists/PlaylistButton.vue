@@ -2,7 +2,7 @@
     <div 
         class="single-playlist-button"
         @click="$emit('get-single-playlist', playlist.id, playlist.name)"
-        :title=playlistDescription
+        :title="playlistDescription"
     > 
         {{ playlist.name }}
     </div>

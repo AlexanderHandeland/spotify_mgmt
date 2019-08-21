@@ -20,19 +20,22 @@ export default {
   },
   data() {
     return {
-      authenticated: false,
-      loggingIn: false,
-      userId: '',
-      token: ''
+      // change to false/false/''/'' when done testing
+      authenticated: true,
+      loggingIn: true,
+      userId: 'AlexHandeland',
+      token: 'BQAN4RMfCvqT5iqXkVI_N6gCm7HFmAfFtR-trVuz8f6ygT-wAosjzwHEAIsF3_RHhfK8Z8xgX1j71nlxERU_jPjBYk7AasDdYchLOxemHXY3sWheASS3dBuAUCrEVXuPtH5FrxmGjGtWhR7tHR69fwJWptZxLZH0VzKQEw',
+
+      playlistTitle: ''
     }
   },
   mounted() {
     if(!this.authenticated) {
-      // if(this.loggingIn) {
-      //   this.$router.replace({ name: 'token' });
-      // } else {
-        // this.$router.replace({ name: "login" });
-      // }
+      if(this.loggingIn) {
+        this.$router.replace({ name: 'token' });
+      } else {
+        this.$router.replace({ name: "login" });
+      }
     }
   },
   methods: {
@@ -62,16 +65,23 @@ export default {
 
   * {
     box-sizing: border-box;
-    margin: 0px;
+    margin: 0;
     padding: 0;
   }
 
+  /* remove bullet points in lists */
+  li {
+    display: block;
+  }
+
+  /* default styling for app elements */
   body {
-    /* background: var(--spotify-black); */
     background: black;
+    color: white;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.4;
-    margin-top: 30px;
+    /* margin-top: 30px; */
+    text-align: center;
   }
 
 /* scrollbar css */

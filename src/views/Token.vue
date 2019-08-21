@@ -1,8 +1,8 @@
 <template>
     <div class="main-div">
         <div id="token">
-            <h2>Great</h2>
-            <p></p>
+            <h2>Hello My Man</h2>
+            <p>Proceed to app</p>
             <a class="a-button" @click="proceed">Proceed</a>
             <!-- <GreenBtn id="login-button" v-on:button-click="login">Login</GreenBtn> -->
         </div>
@@ -20,8 +20,8 @@ export default {
             this.$emit('authenticated', true, this.$route.query.a);
             console.log(this.$route.query.a);
             this.$router.replace( { name: "home" });
-            }
         }
+    }
 }
 </script>
 
