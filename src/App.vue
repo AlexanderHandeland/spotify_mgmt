@@ -20,11 +20,13 @@ export default {
   },
   data() {
     return {
-      // change to false/false/''/'' when done testing
-      authenticated: true,
-      loggingIn: true,
-      userId: 'AlexHandeland',
-      token: 'BQAN4RMfCvqT5iqXkVI_N6gCm7HFmAfFtR-trVuz8f6ygT-wAosjzwHEAIsF3_RHhfK8Z8xgX1j71nlxERU_jPjBYk7AasDdYchLOxemHXY3sWheASS3dBuAUCrEVXuPtH5FrxmGjGtWhR7tHR69fwJWptZxLZH0VzKQEw',
+      // Change to true/true/AlexHandeland/{token} when testing
+      // Change to false/false/''/'' when done testing
+
+      authenticated: false,
+      loggingIn: false,
+      userId: '',
+      token: '',
 
       playlistTitle: ''
     }
@@ -80,7 +82,6 @@ export default {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.4;
-    /* margin-top: 30px; */
     text-align: center;
   }
 

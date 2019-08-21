@@ -231,7 +231,12 @@ export default {
     }
 
     .main-content-div {
-        width: 1200px;
-        display: inline-block;
+        /* padding: 60px 25px; */
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        
+
     }
 </style>

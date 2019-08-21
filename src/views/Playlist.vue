@@ -116,12 +116,6 @@ export default {
 
     backToPlaylists: function() {
       this.$router.replace({ name: "home" });
-
-      // // Reset playlist counter
-      // this.loadedTracksCounter = 0;
-
-      // // Reset flag that disables fetching more data
-      // this.enableLoadMoreTracksFlag = true;
     },
 
     saveToFile: function() {

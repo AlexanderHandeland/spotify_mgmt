@@ -2,7 +2,7 @@
     <header class="header"> 
 
         <div id="nav">
-            <a title="Logo placeholder" @click="verify">&#9889;</a>
+            <a title="Logo placeholder" @click="verify" v-html="htmlUnicode"></a>
             <router-link to="/home">Spotify Mgmt</router-link>
             <router-link to="/chronologify">Chronologify</router-link>
             <router-link to="/about">About</router-link>
@@ -14,12 +14,24 @@
 <script>
 export default {
     name: "Header",
+    data() {
+        return {
+            htmlUnicode: ''
+        }
+    },
     methods: {
         verify: function() {
             console.log('clicked');
             console.log(this.$parent.$data.authenticated);
             console.log(this.$parent.$data.userId);
             console.log(this.$parent.$data.token);
+        }
+    },
+    created() {
+        this.htmlUnicode = '&#' + randomInteger(127789, 127891) + ';';
+
+        function randomInteger(min, max) {
+            return Math.floor(Math.random() * (max - min) ) + min;
         }
     }
 }
@@ -37,7 +49,7 @@ export default {
     }
 
     .header a {
-        float: left;
+        float: right;
         display: block;
         color: white;
         text-align: center;
@@ -49,6 +61,10 @@ export default {
         /* font-size: 10px; */
         letter-spacing: 2px;
         text-transform: uppercase;
+    }
+
+    .header a:first-child {
+        float: left;
     }
     
     .header a:hover {
