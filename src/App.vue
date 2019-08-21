@@ -32,6 +32,8 @@ export default {
     }
   },
   mounted() {
+    console.log('Authenticated: ' + this.authenticated);
+    console.log('Logging In: ' + this.loggingIn);
     if(!this.authenticated) {
       if(this.loggingIn) {
         this.$router.replace({ name: 'token' });
