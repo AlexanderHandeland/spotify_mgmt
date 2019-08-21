@@ -24,7 +24,7 @@ export default {
       // Change to false/false/''/'' when done testing
 
       authenticated: false,
-      loggingIn: false,
+      loggingIn: true,
       userId: '',
       token: '',
 
@@ -35,11 +35,11 @@ export default {
     console.log('Authenticated: ' + this.authenticated);
     console.log('Logging In: ' + this.loggingIn);
     if(!this.authenticated) {
-      if(this.loggingIn) {
-        this.$router.replace({ name: 'token' });
-      } else {
-        this.$router.replace({ name: 'login' });
-      }
+      // if(this.loggingIn) {
+      //   this.$router.replace({ name: 'token' });
+      // } else {
+      //   this.$router.replace({ name: 'login' });
+      // }
     }
   },
   methods: {
