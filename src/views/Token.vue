@@ -64,7 +64,7 @@ export default {
 
     #token {
         /* background: var(--playlist-backdrop-gray); */
-        border: 2px solid var(--playlist-hover-gray);
+        /* border: 2px solid var(--playlist-hover-gray); */
         border-radius: 10px;
         position: absolute;
         top: 50%;

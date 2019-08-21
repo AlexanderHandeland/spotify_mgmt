@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header v-if="authenticated" />
-    <router-view @authenticated="setAuthenticated" />
+    <router-view @authenticated="setAuthenticated" @loggingIn="setLoggingIn" />
     <Footer v-if="authenticated" />
   </div>
 </template>
@@ -41,6 +41,10 @@ export default {
     }
   },
   methods: {
+    setLoggingIn(status) {
+      this.loggingIn = status;
+    },
+
     setAuthenticated(status, token) {
       this.authenticated = status;
       this.token = token;
