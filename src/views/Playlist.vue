@@ -115,7 +115,7 @@ export default {
     },
 
     backToPlaylists: function() {
-      this.$router.replace({ name: "home" });
+      this.$router.replace({ name: "playlists" });
     },
 
     saveToFile: function() {

@@ -2,7 +2,8 @@
     <div class="chrono">
         <div class="main-content-div">
             <div class="search-div" v-if="searchDivFlag">
-
+                <h2>Chin qui</h2>
+                <p>Not done, work in progress ai</p> <br/> <br/>
                 <div class="find-artist-div">
                     <SearchArtistComponent
                         v-on:update-artist-search="updateArtistSearch"

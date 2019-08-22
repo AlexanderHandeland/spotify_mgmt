@@ -25,7 +25,7 @@ export default {
 
       authenticated: false,
       userId: '',
-      // token: 'BQCN8dPc2dErVnNiDEi-xYgxM-5L5WYzVVrE3AtRZjX7EF8lf56NpJdhjgI25zOpc71BQdRd4xHZBGyNojwBPOPwO-eWTSTYAd7HaN9xoP7hccx2CNglFRocVhhVitCaiRAs8DKGEc-DAs2wlFxV1r4jCLawq69wYM4TiA',
+      // token: 'BQAVJkPW7TEdriXXarhsrS0xDLKg75L68jw5TMOPh1_KNlLOjZOmKnPMO2dApsXHs4ZlCkj4kcNWXMXkoF3c7KT6ZtcKPR8Cn0TMUf4TyjzMe8Ybi__WLMgQ3rbfQg1ejJlJ3lsXV5mzrr-cX5XtCwEfJ122NF74Jzw_iQ',
       token: '',
 
       playlistTitle: ''

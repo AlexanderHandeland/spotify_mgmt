@@ -3,14 +3,23 @@
 
         <div id="nav">
             <a>Logged in as <span style="font-weight: bold">{{ this.$parent.$data.userId}} </span></a>
+            
         </div>
 
+        <!-- <div class="footer-circle">
+            <GreenCircle >&#9776;</GreenCircle>
+        </div> -->
     </header>
 </template>
 
 <script>
+import GreenCircle from '@/components/Mics/GreenCircle'
+
 export default {
-    name: "Footer"
+    name: "Footer",
+    components: {
+        GreenCircle
+    }
 }
 </script>
 
@@ -22,7 +31,7 @@ export default {
         bottom: 0;
         right: 0;
         width: 100%;
-        border-bottom: 2px solid var(--playlist-hover-gray);
+        /* border-top: 2px solid var(--playlist-hover-gray); */
     }
 
     .footer a {
@@ -41,5 +50,9 @@ export default {
     
     .header a:hover {
         background: var(--playlist-hover-gray);
+    }
+
+    .footer-circle {
+        margin: 10px;
     }
 </style>

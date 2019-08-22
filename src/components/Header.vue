@@ -2,8 +2,8 @@
     <header class="header"> 
 
         <div id="nav">
-            <a title="Logo placeholder" @click="verify" v-html="htmlUnicode"></a>
-            <router-link to="/home">Spotify Mgmt</router-link>
+            <a @click="verify" v-html="htmlUnicode"></a>
+            <router-link to="/home">CSVify</router-link>
             <router-link to="/chronologify">Chronologify</router-link>
             <router-link to="/about">About</router-link>
         </div>
@@ -53,7 +53,7 @@ export default {
         display: block;
         color: white;
         text-align: center;
-        padding: 14px 16px;
+        padding: 12px 16px 12px;
         text-decoration: none;
         font-size: 12px;
         user-select: none;

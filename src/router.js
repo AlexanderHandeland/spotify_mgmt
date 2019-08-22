@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './views/Login.vue'
 import Home from './views/Home.vue'
+import Playlists from './views/Playlists.vue'
 import Playlist from './views/Playlist.vue'
 import Chronologify from './views/Chronologify.vue'
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/playlists',
+      name: 'playlists',
+      component: Playlists
     },
     {
       path: '/playlist/:id',
