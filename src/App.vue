@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header v-if="authenticated" />
-    <router-view @authenticated="setAuthenticated" @loggingIn="setLoggingIn" />
+    <router-view @authenticated="setAuthenticated" />
     <Footer v-if="authenticated" />
   </div>
 </template>
@@ -24,7 +24,6 @@ export default {
       // Change to false/false/''/'' when done testing
 
       authenticated: false,
-      loggingIn: false,
       userId: '',
       token: '',
 
@@ -33,11 +32,7 @@ export default {
   },
   mounted() {
     if(!this.authenticated) {
-      // if(this.loggingIn) {
-      //   this.$router.replace({ name: 'token' });
-      // } else {
-      // //   this.$router.replace({ name: 'login' });
-      // }
+        this.$router.replace({ name: 'login' });
     }
   },
   methods: {
@@ -67,6 +62,7 @@ export default {
 
   * {
     box-sizing: border-box;
+    margin-top: 30px;
     margin: 0;
     padding: 0;
   }

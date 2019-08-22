@@ -29,7 +29,8 @@ export default {
         console.log('Query is: ' + typeof this.$route.query.a);
         if (typeof this.$route.query.a !== 'undefined') {
             this.$emit('authenticated', true, this.$route.query.a);
-            this.$router.replace( { name: "home" });
+            // this.$router.replace( { name: "home" });
+            this.$router.push({ name: 'home'});  
         }
         // else
         // Code to change button layout to 'Proceed' to manually click
