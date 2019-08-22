@@ -1,6 +1,9 @@
 <template>
   <div class="home">
     <div class="main-content-div">
+      <p v-if="displayButton">Click for your Spotify playlists</p>
+      <h2 v-if="!displayButton">Select a playlist</h2>
+      <GreenBtn v-if="displayButton" v-on:button-click="getPlaylists">Get playlists</GreenBtn>
       <AllPlaylists
         v-bind:playlists="playlists"
         v-on:get-single-playlist="getSinglePlaylist"
@@ -14,43 +17,42 @@
 <script>
 // @ is an alias to /src
 import AllPlaylists from '@/components/AllPlaylists/AllPlaylists'
+import GreenBtn from '@/components/Mics/GreenBtn'
 
 import axios from 'axios'
 
 export default {
   name: 'home',
   components: {
-    AllPlaylists
+    AllPlaylists,
+    GreenBtn
   },
   data() {
     return {
-      playlists: []
+      playlists: [],
+      displayButton: true
     }
   },
   methods: {
+    getPlaylists: function() {
+      // API call to get all playlists of user
+      axios.get('https://api.spotify.com/v1/users/' + this.$parent.$data.userId + '/playlists', {
+        headers: {
+            Authorization: 'Bearer ' + this.$parent.$data.token
+        }
+      })
+      .then(res => { 
+        // Code for successful API request
+        this.playlists = res.data.items;
+        this.displayButton = false;
+        })
+      .catch(err => console.log(err));
+    },
+
     getSinglePlaylist: function(id, name) {
       this.$parent.$data.playlistTitle = name;
       this.$router.push({ name: 'playlist', params: {id} });      
     }
-  },
-
-  created() {   
-    // API call to get all playlists of user
-    axios.get('https://api.spotify.com/v1/users/' + this.$parent.$data.userId + '/playlists', {
-        headers: {
-            Authorization: 'Bearer ' + this.$parent.$data.token
-        }
-    })
-    .then(res => { 
-      // Code for successful API request
-      this.playlists = res.data.items;
-
-      // Set front-end view flags
-      this.initScreenFlag = false;
-      this.allPlaylistsFlag = true;
-      this.singlePlaylistFlag = false;
-      })
-    .catch(err => console.log(err));
   }
 }
 </script>
@@ -63,5 +65,9 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+  }
+  
+  h2, p {
+    padding: 10px;
   }
 </style>

@@ -25,7 +25,7 @@ export default {
 
       authenticated: false,
       userId: '',
-      //token: 'BQBHYyIwHDEHS8iqOsIMh4CpLH9R01s14ZCsDB6KqkjB93_95y6tpdF3bUPfNlaqdkareDTx9VI9Yoqw2q94y1P3SshkHyKzdQVfpHTRWswWD_D9OsqnLLMP21jlKvW2rUwwzpL0U84TxzSiDvIj86E5Cuzkx425rtdQhw',
+      // token: 'BQCN8dPc2dErVnNiDEi-xYgxM-5L5WYzVVrE3AtRZjX7EF8lf56NpJdhjgI25zOpc71BQdRd4xHZBGyNojwBPOPwO-eWTSTYAd7HaN9xoP7hccx2CNglFRocVhhVitCaiRAs8DKGEc-DAs2wlFxV1r4jCLawq69wYM4TiA',
       token: '',
 
       playlistTitle: ''
@@ -52,7 +52,7 @@ export default {
           this.userId = res.data.id;
           })
         .catch(err => console.log(err));
-        
+
       this.$router.push({ name: 'home'});
     }
   }
