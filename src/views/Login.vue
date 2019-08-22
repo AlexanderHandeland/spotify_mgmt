@@ -3,7 +3,7 @@
         <div id="login">
             <!-- <h1>Hello my fine man</h1> -->
             <h2>Holla Holla</h2>
-            <p>Please log in with your Spotify account</p>
+            <p>Please log in with your Spotify account to continue</p>
             <a class="a-button" href="https://spotify-mgmt-backend.herokuapp.com/login">Take me there</a>
             <!-- <GreenBtn id="login-button" v-on:button-click="login">Login</GreenBtn> -->
         </div>
