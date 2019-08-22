@@ -4,7 +4,7 @@
             <!-- <h1>Hello my fine man</h1> -->
             <h2>Holla Holla</h2>
             <p>Please log in with your Spotify account</p>
-            <a class="a-button" href="https://spotify-mgmt-backend.herokuapp.com/login" @click="getToken">Login</a>
+            <a class="a-button" href="https://spotify-mgmt-backend.herokuapp.com/login">Login</a>
             <!-- <GreenBtn id="login-button" v-on:button-click="login">Login</GreenBtn> -->
         </div>
     </div>
@@ -20,16 +20,9 @@ export default {
     components: {
         GreenBtn
     },
-    methods: {
-        getToken() {
-            // this.$router.replace({ name: 'token' });
-        }
-    },
     mounted() {
-        console.log('Query is: ' + typeof this.$route.query.a);
         if (typeof this.$route.query.a !== 'undefined') {
             this.$emit('authenticated', true, this.$route.query.a);
-            // this.$router.replace( { name: "home" });
             this.$router.push({ name: 'home'});  
         }
         // else

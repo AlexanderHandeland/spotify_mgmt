@@ -56,7 +56,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
   .main-content-div {
     padding: 60px 25px;
     position: absolute;

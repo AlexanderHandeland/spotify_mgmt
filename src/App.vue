@@ -23,9 +23,9 @@ export default {
       // Change to true/true/AlexHandeland/{token} when testing
       // Change to false/false/''/'' when done testing
 
-      authenticated: false,
-      userId: '',
-      token: '',
+      authenticated: true,
+      userId: 'AlexHandeland',
+      token: 'BQBHYyIwHDEHS8iqOsIMh4CpLH9R01s14ZCsDB6KqkjB93_95y6tpdF3bUPfNlaqdkareDTx9VI9Yoqw2q94y1P3SshkHyKzdQVfpHTRWswWD_D9OsqnLLMP21jlKvW2rUwwzpL0U84TxzSiDvIj86E5Cuzkx425rtdQhw',
 
       playlistTitle: ''
     }
@@ -62,7 +62,6 @@ export default {
 
   * {
     box-sizing: border-box;
-    margin-top: 30px;
     margin: 0;
     padding: 0;
   }
@@ -75,6 +74,7 @@ export default {
   /* default styling for app elements */
   body {
     background: black;
+    margin-top: 30px;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.4;
