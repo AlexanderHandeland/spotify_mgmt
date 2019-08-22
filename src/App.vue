@@ -52,6 +52,8 @@ export default {
           this.userId = res.data.id;
           })
         .catch(err => console.log(err));
+        
+      this.$router.push({ name: 'home'});
     }
   }
 }

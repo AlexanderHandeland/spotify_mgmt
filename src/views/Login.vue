@@ -4,7 +4,7 @@
             <!-- <h1>Hello my fine man</h1> -->
             <h2>Holla Holla</h2>
             <p>Please log in with your Spotify account</p>
-            <a class="a-button" href="https://spotify-mgmt-backend.herokuapp.com/login">Login</a>
+            <a class="a-button" href="https://spotify-mgmt-backend.herokuapp.com/login">Take me there</a>
             <!-- <GreenBtn id="login-button" v-on:button-click="login">Login</GreenBtn> -->
         </div>
     </div>
@@ -22,8 +22,7 @@ export default {
     },
     mounted() {
         if (typeof this.$route.query.a !== 'undefined') {
-            this.$emit('authenticated', true, this.$route.query.a);
-            this.$router.push({ name: 'home'});  
+            this.$emit('authenticated', true, this.$route.query.a);  
         }
         // else
         // Code to change button layout to 'Proceed' to manually click
@@ -47,7 +46,7 @@ export default {
 
         background: var(--spotify-dark-green);
         padding: 10px;
-        margin: 10px 0;
+        /* margin: 10px 0; */
         text-align: center;
         /* font-size: 10px; */
         letter-spacing: 2px;
