@@ -23,9 +23,10 @@ export default {
       // Change to true/true/AlexHandeland/{token} when testing
       // Change to false/false/''/'' when done testing
 
-      authenticated: true,
-      userId: 'AlexHandeland',
-      token: 'BQBHYyIwHDEHS8iqOsIMh4CpLH9R01s14ZCsDB6KqkjB93_95y6tpdF3bUPfNlaqdkareDTx9VI9Yoqw2q94y1P3SshkHyKzdQVfpHTRWswWD_D9OsqnLLMP21jlKvW2rUwwzpL0U84TxzSiDvIj86E5Cuzkx425rtdQhw',
+      authenticated: false,
+      userId: '',
+      //token: 'BQBHYyIwHDEHS8iqOsIMh4CpLH9R01s14ZCsDB6KqkjB93_95y6tpdF3bUPfNlaqdkareDTx9VI9Yoqw2q94y1P3SshkHyKzdQVfpHTRWswWD_D9OsqnLLMP21jlKvW2rUwwzpL0U84TxzSiDvIj86E5Cuzkx425rtdQhw',
+      token: '',
 
       playlistTitle: ''
     }

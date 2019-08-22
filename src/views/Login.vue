@@ -45,10 +45,7 @@ export default {
         font-size: 16px;
         border-radius: 20px;
 
-
         background: var(--spotify-dark-green);
-        /* border: none; */
-        /* color: white; */
         padding: 10px;
         margin: 10px 0;
         text-align: center;
