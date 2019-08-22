@@ -34,7 +34,7 @@ export default {
     }
   },
 
-  created() {   
+  mounted() {   
     // API call to get all playlists of user
     axios.get('https://api.spotify.com/v1/users/' + this.$parent.$data.userId + '/playlists', {
         headers: {
