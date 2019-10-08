@@ -8,7 +8,7 @@
                 v-on:get-single-playlist="getSinglePlaylist"
             />
 
-            <GreenBtn v-if="remainingPlaylists != 0" v-on:button-click="loadPlaylistsRecursive">Load remaining {{ remainingPlaylists }} playlists</GreenBtn>
+            <GreenBtn v-if="remainingPlaylists != 0" v-on:button-click="loadPlaylistsRecursive"> Load remaining {{ remainingPlaylists }} playlists</GreenBtn>
 
         </div>    
     </div>
