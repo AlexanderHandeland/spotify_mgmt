@@ -20,12 +20,15 @@ export default {
   },
   data() {
     return {
-      // Change to true/true/AlexHandeland/{token} when testing
-      // Change to false/false/''/'' when done testing
+      // Change to true/AlexHandeland/{token} when testing
+      // Change to false/''/'' when done testing
 
+      // authenticated: true,
+      // userId: 'AlexHandeland',
+      // token: 'BQB516bPXj5ogIzINBvu-i4sy-5iccqv9Uw4a5KlIMGSDrCsR9wEyP_qttjb_SQSYEqlwen1BOldvVzYQA0z9Uk-0vZ-UmPDO2J_CR9gb9OBdU87FWFSy91CN2vhMAVax7qBjG57CZeHnmE4iVo_OrfXukaTMEVtgoBr6w',
+      
       authenticated: false,
       userId: '',
-      // token: 'BQAVJkPW7TEdriXXarhsrS0xDLKg75L68jw5TMOPh1_KNlLOjZOmKnPMO2dApsXHs4ZlCkj4kcNWXMXkoF3c7KT6ZtcKPR8Cn0TMUf4TyjzMe8Ybi__WLMgQ3rbfQg1ejJlJ3lsXV5mzrr-cX5XtCwEfJ122NF74Jzw_iQ',
       token: '',
 
       playlistTitle: ''
@@ -82,6 +85,7 @@ export default {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.4;
     text-align: center;
+    user-select: none;
   }
 
 /* scrollbar css */

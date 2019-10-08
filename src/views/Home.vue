@@ -2,7 +2,7 @@
   <div class="home">
     <div class="main-content-div">
 
-      <h2>Save your Spotify playlists</h2>
+      <h2>Access your Spotify playlists</h2>
 
       <GreenBtn v-on:button-click="goToPlaylists">Get playlists</GreenBtn>
     </div> 
@@ -38,11 +38,11 @@ export default {
 
 <style scoped>
   .main-content-div {
-    padding: 60px 25px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    padding: 40px 25px;
+    position: fixed;
+    left: 30%; /* 50% - width/2 */
+    width: 40%;
+    /* transform: translate(-50%,-50%); */
   }
   
   h2, p {

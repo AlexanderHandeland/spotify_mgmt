@@ -7,6 +7,7 @@
             <ul class="playlist-column-headers">
                 <li class="clickable" v-on:click="$emit('sort-song-title-toggle')">Song</li>
                 <li class="clickable" v-on:click="$emit('sort-song-artist-toggle')">Artist</li>
+                <li class="clickable" v-on:click="$emit('sort-song-duration-toggle')">Dur</li>
             </ul>
         </ul>
     </div>
@@ -25,7 +26,7 @@ export default {
 
 <style scoped>
     .playlist-title {
-        background: var(--spotify-green);
+        background: var(--spotify-dark-green);
         color: #fff;
         padding: 6px 0;
         margin: 0;
@@ -47,8 +48,13 @@ export default {
 
     .playlist-column-headers li {
         display: inline-block;
-        width: 50%;
+        width: 47%;
         padding: 10px;
+    }
+
+    
+    .playlist-column-headers li:nth-child(3) {
+        width: 6%;
     }
 
     .clickable:hover {

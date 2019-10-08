@@ -7,6 +7,9 @@
             <li>
                 {{ song.track.artists[0].name }}
             </li>
+            <li>
+                {{ durationSec }}
+            </li>
         </ul>
     </div>
 </template>
@@ -15,7 +18,16 @@
 <script>
 export default {
     name: 'SongItem',
-    props: ["song"]
+    props: ["song"],
+    computed: {
+        durationSec: function() {
+            var duration_sec = Math.floor(this.song.track.duration_ms * 0.001);
+            var sec = String("0" + duration_sec % 60).slice(-2);
+            var min = String(Math.floor(duration_sec/60));
+
+            return min + ":" + sec;
+        }
+    }
 }
 </script>
 
@@ -37,24 +49,17 @@ export default {
         margin: 0;
         list-style-type: none;
         display: inline-block;
-        width: 50%;
+        width: 47%;
         text-align: left;
         font-size: 14px;
         color: white;
     }
 
-    .playlist-column-headers {
-        margin: 0;
-        background-color: var(--spotify-black);
-        color: #ddd;
-        text-align: left;
-        font-size: 13px;
-        font-weight: bold;
+    .song-item li:nth-child(3) {
+        width: 6%;
+        color: #999999;
+        text-align: right;
+        padding-right: 4px;
     }
 
-    .playlist-column-headers li {
-        display: inline-block;
-        width: 50%;
-        padding: 10px;
-    }
 </style>

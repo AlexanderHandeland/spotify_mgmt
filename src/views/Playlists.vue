@@ -53,11 +53,12 @@ export default {
 
 <style scoped>
   .main-content-div {
-    padding: 60px 25px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    padding: 40px 25px;
+    position: fixed;
+    width: 20%;
+    left: 40%; /* 50% - width/2 */
+    
+    /* transform: translate(-50%,-50%); */ 
   }
   
   h2, p {

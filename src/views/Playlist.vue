@@ -5,6 +5,7 @@
         v-bind:playlistTitle="playlistTitle"
         v-on:sort-song-title-toggle="sortSongTitleToggle"
         v-on:sort-song-artist-toggle="sortSongArtistToggle"
+        v-on:sort-song-duration-toggle="sortSongDurationToggle"
       />
       
       <Songs
@@ -56,6 +57,7 @@ export default {
       // Sorting
       sortBySongFlag: false,
       sortByArtistFlag: false,
+      sortByDurationFlag: false,
 
       // Loaded tracks
       enableLoadMoreTracksFlag: true
@@ -200,6 +202,30 @@ export default {
       
       // Toggle flag
       this.sortByArtistFlag = !this.sortByArtistFlag;
+    },
+
+    sortSongDurationToggle: function() {
+      function compareDuration (a, b) {
+        if (a.track.duration_ms < b.track.duration_ms ) {
+          return -1;
+        }
+        if (a.track.duration_ms > b.track.duration_ms ) {
+          return 1;
+        }
+        return 0;
+      }
+
+      // Check flag (sortByArtistFlag) which flags if 
+      // the playlist is already sorted by artist
+
+      // If it is sorted by artist, sort by artist in ascending order
+      // If it is not sorted, sort by artist in descending order
+      this.sortByDurationFlag ? 
+        this.songs.reverse( compareDuration ) :
+        this.songs.sort( compareDuration );
+      
+      // Toggle flag
+      this.sortByDurationFlag = !this.sortByDurationFlag;
     }
   }
 }
@@ -208,11 +234,11 @@ export default {
 
 <style scoped>
   .playlist-div {
-    padding: 60px 25px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    padding: 50px 25px; /* padding top 50px slightly higher due to solid colored background*/ 
+    position: fixed;
+    /* top: 50%; */
+    left: 20%; /* 50% - width/2 */
+    /* transform: translate(-50%,-50%); */
 
     width: 60%;
     min-width: 40%;

@@ -54,7 +54,6 @@ import ChronologifyFooter from '@/components/Chronologify/ChronologifyFooter'
 import GreenBtn from '@/components/Mics/GreenBtn.vue'
 
 import axios from 'axios'
-import { timingSafeEqual } from 'crypto';
 
 
 export default {
@@ -196,7 +195,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .chrono {
         /* background: var(--spotify-black); */
         color: white;
