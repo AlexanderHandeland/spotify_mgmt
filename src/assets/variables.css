@@ -1,11 +1,16 @@
 :root {
     /* Colors: */
-    --dark-orange-color: #FF9B0D;
-    --spotify-green: #1db954;
+    /* --dark-orange-color: #FF9B0D;   */
+    --spotify-green: #1db954;       
     --spotify-black: #191414;
-    --spotify-dark-green: #0b9b3d;
+    /* --spotify-dark-green: #0b9b3d; */
     --playlist-backdrop-gray: #333;
     --playlist-hover-gray: #555;
-    --testing: #193633;
-    --testing-hover: #63827F;
+    /* --testing: #193633;
+    --testing-hover: #63827F; */
+
+    
+    /* Alternative Green colors: */
+    --spotify-green: #63827F;     
+    --spotify-dark-green: #193633;
 }

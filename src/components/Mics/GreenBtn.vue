@@ -34,6 +34,10 @@ export default {
         outline-color: white;
     }
 
+    .green-button:hover {
+        background-color: var(--spotify-green);
+    }
+
 
     .disabled-button {
         background-color: var(--playlist-backdrop-gray);

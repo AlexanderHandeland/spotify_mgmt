@@ -80,8 +80,8 @@ export default {
   .main-content-div {
     padding: 40px 25px;
     position: fixed;
-    width: 20%;
-    left: 40%; /* 50% - width/2 */
+    width: 40%;
+    left: 30%; /* 50% - width/2 */
     
     /* transform: translate(-50%,-50%); */ 
   }
