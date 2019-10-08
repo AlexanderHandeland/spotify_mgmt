@@ -35,6 +35,10 @@
     color: white;
   }
 
+  .about {
+    padding: 16px 0
+  }
+
   .standout-text {
     font-weight: bold;
   }

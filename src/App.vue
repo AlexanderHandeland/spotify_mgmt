@@ -23,19 +23,19 @@ export default {
       // Change to true/AlexHandeland/{token} when testing
       // Change to false/''/'' when done testing
 
-      // authenticated: true,
-      // userId: 'AlexHandeland',
-      // token: 'BQB516bPXj5ogIzINBvu-i4sy-5iccqv9Uw4a5KlIMGSDrCsR9wEyP_qttjb_SQSYEqlwen1BOldvVzYQA0z9Uk-0vZ-UmPDO2J_CR9gb9OBdU87FWFSy91CN2vhMAVax7qBjG57CZeHnmE4iVo_OrfXukaTMEVtgoBr6w',
+      authenticated: true,
+      userId: 'AlexHandeland',
+      token: 'BQDKy4V8S0Cyl24f1ilKrGcwplYJi1eM1X3r2qdwxrtwGDn-9oU3FqWip0t_pSLEv3A47Zp844nsr-SJ38HbANrb6PnwZpsqalw2MgWN-uHWd0i5b-7TH6C1hTLSQjzv5s5fC7z2Oxr74gWNZCN8ShcnIt9gkDG7l2Bz4g',
       
-      authenticated: false,
+      /*authenticated: false,
       userId: '',
-      token: '',
+      token: '',*/
 
       playlistTitle: ''
     }
   },
   mounted() {
-    if(!this.authenticated) {
+    if (!this.authenticated) {
         this.$router.replace({ name: 'login' });
     }
   },
@@ -56,7 +56,7 @@ export default {
           })
         .catch(err => console.log(err));
 
-      this.$router.push({ name: 'home'});
+      this.$router.push({ name: 'home' });
     }
   }
 }

@@ -29,7 +29,8 @@ export default {
 
 <style scoped>
    .single-playlist-button {
-        background-color: var(--spotify-dark-green);
+        /* background-color: var(--spotify-dark-green); */
+        background-color: var(--testing);
         border: none;
         color: white;
         padding: 6px 8px;
@@ -45,6 +46,6 @@ export default {
     }
 
     .single-playlist-button:hover {
-        background-color: var(--spotify-green);
+        background-color: var(--testing-hover);
     }
 </style>

@@ -1,13 +1,13 @@
 <template>
     <div>
         <div class="footer-text"> 
-            {{ loadedTracksCounter }} of {{ totalTracksInPlaylist }} tracks loaded
+            {{ songs.length }} of {{ totalTracksInPlaylist }} tracks loaded
         </div>
 
-        <GreenBtn v-if="enableLoadMoreTracksFlag" v-on:button-click="$emit('load-more-tracks')">Load more tracks</GreenBtn>
-        <GreenBtn v-if="!enableLoadMoreTracksFlag" :disabled="true">Load more tracks</GreenBtn>
+        <!-- <GreenBtn v-if="enableLoadMoreTracksFlag" v-on:button-click="$emit('load-more-tracks')">Load more tracks</GreenBtn> -->
+        <!-- <GreenBtn v-if="!enableLoadMoreTracksFlag" :disabled="true">Load more tracks</GreenBtn> -->
 
-        <GreenBtn v-on:button-click="$emit('save-to-file')">Save to file</GreenBtn>
+        <GreenBtn v-on:button-click="$emit('save-to-file')"> Download file</GreenBtn>
 
         <GreenBtn v-on:button-click="$emit('back-to-playlists')">Back</GreenBtn>
 
@@ -24,7 +24,7 @@ export default {
     components: {
         GreenBtn
     },
-    props: ['loadedTracksCounter', 'totalTracksInPlaylist', 'enableLoadMoreTracksFlag'],
+    props: ['songs', 'totalTracksInPlaylist'],
 }
 </script>
 

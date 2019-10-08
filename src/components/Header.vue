@@ -45,7 +45,7 @@ export default {
         position: fixed;
         top: 0;
         width: 100%;
-        border-bottom: 2px solid var(--playlist-hover-gray);
+        border-bottom: 1px solid white;
     }
 
     .header a {

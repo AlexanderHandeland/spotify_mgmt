@@ -13,10 +13,8 @@
       />
 
       <PlaylistFooter
-        v-bind:loadedTracksCounter="loadedTracksCounter"
+        v-bind:songs="songs"
         v-bind:totalTracksInPlaylist="totalTracksInPlaylist"
-        v-bind:enableLoadMoreTracksFlag="enableLoadMoreTracksFlag"
-        v-on:load-more-tracks="loadMoreTracks"
         v-on:save-to-file="saveToFile"
         v-on:back-to-playlists="backToPlaylists"
       />
@@ -48,19 +46,12 @@ export default {
 
       // Playlist data
       songs: [],
-      nextUrl: '',
       totalTracksInPlaylist: '',
-      loadedTracksCounter: 0,
-
-      // Flags
 
       // Sorting
       sortBySongFlag: false,
       sortByArtistFlag: false,
       sortByDurationFlag: false,
-
-      // Loaded tracks
-      enableLoadMoreTracksFlag: true
     }
   },
   created() {
@@ -71,49 +62,33 @@ export default {
         }
       })
         .then(res => {
-          // Store response data
+          // Store variables
           this.songs = res.data.items;
-          this.nextUrl = res.data.next;
           this.totalTracksInPlaylist = res.data.total;
 
-          // Calculate tracks displayed to user 
-          this.loadedTracksCounter = Math.min( (res.data.offset + res.data.limit), this.totalTracksInPlaylist );
-
-          // Disable 'Load more tracks' button if no more tracks remain unloaded
-          if (this.loadedTracksCounter == this.totalTracksInPlaylist) 
-             this.enableLoadMoreTracksFlag = false;
-
-          })
+          // Load remaining tracks recursively (100 each request)
+          this.loadMoreTracksRecursive(res.data.next);
+        })
         .catch(err => console.log(err));
+
   },
   methods: {
-    loadMoreTracks: function() {
-      // Disable button
-      this.enableLoadMoreTracksFlag = false;
-
-      axios.get(this.nextUrl, {
-        headers: {
-          Authorization: 'Bearer ' + this.$parent.$data.token
-        }
-      })
-        .then(res => {
-          // Code for succesful API request
-
-          // Append response data to current data
-          this.songs.push(...res.data.items);
-
-          // Update next url
-          this.nextUrl = res.data.next;
-
-          // Calculate tracks displayed to user,
-          // smallest of offset+limit, totaltracksinplaylist
-          this.loadedTracksCounter = Math.min( (res.data.offset + res.data.limit), this.totalTracksInPlaylist );          
-
-          // // Enable 'Load more tracks' button if more tracks remain unloaded
-          if (this.loadedTracksCounter < this.totalTracksInPlaylist) 
-             this.enableLoadMoreTracksFlag = true;
+    loadMoreTracksRecursive: function(url) {
+      if (url !== null) {
+        axios.get(url, {
+            headers: {
+              Authorization: 'Bearer ' + this.$parent.$data.token
+            }
           })
-        .catch(err => console.log(err));
+          .then(res => {
+            // Append songs to variable
+            this.songs.push(...res.data.items);
+
+            // Find next URL (if there are more trakcs to load)
+            this.loadMoreTracksRecursive(res.data.next);
+          })
+          .catch(err => console.log(err));
+      }
     },
 
     backToPlaylists: function() {

@@ -51,7 +51,7 @@ import SearchArtistComponent from '@/components/Chronologify/SearchArtistCompone
 import SearchArtistResultsComponent from '@/components/Chronologify/SearchArtistResultsComponent'
 import ChronologifyHeader from '@/components/Chronologify/ChronologifyHeader'
 import ChronologifyFooter from '@/components/Chronologify/ChronologifyFooter'
-import GreenBtn from '@/components/Mics/GreenBtn.vue'
+import GreenBtn from '@/components/Mics/GreenBtn'
 
 import axios from 'axios'
 

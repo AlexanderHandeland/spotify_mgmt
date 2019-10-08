@@ -49,7 +49,7 @@ export default {
     .playlist-column-headers li {
         display: inline-block;
         width: 47%;
-        padding: 10px;
+        padding: 10px 8px;
     }
 
     

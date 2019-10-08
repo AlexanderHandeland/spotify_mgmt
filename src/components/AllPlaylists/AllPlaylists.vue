@@ -1,6 +1,6 @@
 <template>
-  <div class="all-playlists-screen">
-    <ul> 
+  <div>
+    <ul class="playlist-list"> 
       <li v-bind:key="playlist.id" v-for="playlist in playlists">
         
         <PlaylistButton 
@@ -29,5 +29,8 @@ export default {
 
 
 <style scoped>
-
+    .playlist-list {
+        max-height: 60vh;
+        overflow: auto;
+    }
 </style>
