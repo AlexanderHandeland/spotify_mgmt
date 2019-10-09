@@ -3,7 +3,6 @@
 
         <div id="nav">
             <a>Logged in as <span style="font-weight: bold">{{ this.$parent.$data.userId}} </span></a>
-            
         </div>
 
         <!-- <div class="footer-circle">

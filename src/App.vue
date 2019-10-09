@@ -23,12 +23,12 @@ export default {
       // Change to true/AlexHandeland/{token} when testing
       // Change to false/''/'' when done testing
 
-      /*
-      authenticated: true,
+      
+/*    
+      authenticated: false,
       userId: 'AlexHandeland',
-      token: 'BQDKy4V8S0Cyl24f1ilKrGcwplYJi1eM1X3r2qdwxrtwGDn-9oU3FqWip0t_pSLEv3A47Zp844nsr-SJ38HbANrb6PnwZpsqalw2MgWN-uHWd0i5b-7TH6C1hTLSQjzv5s5fC7z2Oxr74gWNZCN8ShcnIt9gkDG7l2Bz4g',
-      */
-
+      token: 'BQBQ25iDgnPR7xNUbKQislDFw1armahI--pueGOwy3hxLfw4RFTIM8y_kNIIWrfvVZoXXsLXD-S5ZSnlNPEvBapQBQ931N18GR13GJ1_kIS4_ppZlM3-t2VPA0avhVDHgeHxaHrKD2GQZKyKgKCO3MQiRK1EkDojKADnHA',
+*/  
       authenticated: false,
       userId: '',
       token: '',
@@ -45,6 +45,7 @@ export default {
     setAuthenticated(status, token) {
       this.authenticated = status;
       this.token = token;
+      setTimeout(() => { setUnauthenticated() }, 60000); // timeout after 50 min (* 60 sec * 1000 ms)
 
       axios.get('https://api.spotify.com/v1/me', {
         headers: {
@@ -60,6 +61,16 @@ export default {
 
       this.$router.push({ name: 'home' });
     }
+  },
+  setUnauthenticated() {
+    console.log("unauthenticated");
+    this.authenticated = false;
+    this.token = '';
+    this.user = '';
+    // Check if this happens automatically - if not, uncomment:
+    // this.$router.replace({ name: 'login' });
+
+    // code for popup that  session has expired
   }
 }
 </script>

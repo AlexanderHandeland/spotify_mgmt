@@ -43,8 +43,7 @@ export default {
         color: #fff;
         font-size: 16px;
         border-radius: 20px;
-
-        background: var(--spotify-dark-green);
+        background-color: var(--spotify-dark-green);
         padding: 10px;
         /* margin: 10px 0; */
         text-align: center;

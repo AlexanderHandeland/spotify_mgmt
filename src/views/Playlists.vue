@@ -9,7 +9,6 @@
             />
 
             <GreenBtn v-if="remainingPlaylists != 0" v-on:button-click="loadPlaylistsRecursive"> Load remaining {{ remainingPlaylists }} playlists</GreenBtn>
-
         </div>    
     </div>
 </template>
@@ -46,7 +45,6 @@ export default {
             this.playlists = res.data.items;
             this.nextUrl = res.data.next; 
             this.remainingPlaylists = res.data.total - res.data.items.length;
-
             })
         .catch(err => console.log(err));
     },
