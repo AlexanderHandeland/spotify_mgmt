@@ -24,15 +24,15 @@ export default {
       // USER VARIABLES
       // Change to true/AlexHandeland/{token} when testing
       // Change to false/''/'' when done testing
-/*
+
       authenticated: true,
       userId: 'AlexHandeland',
       token: 'BQDhJ5z6yIJvFbFJuJWPv8zr-kN1LNWWzlN3UMhTwypBD2gbT-xfSWiUIqFm_HHvx2kLmfzWFtTENSRz6KeP7s0alNNMsRtPkZGQtO61oBsGdFP4cfdR9vH54gUyZ_FY7uyeuiJewNHocJEsg6AsXdUcYjYqNteHv1g8lg',
-*/  
+  /*
       authenticated: false,
       userId: '',
       token: '',
-    
+*/    
       playlistTitle: '',
 
       // CSS VARIABLES

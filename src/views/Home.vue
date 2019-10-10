@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="main-content-div">
+    <div class="main-content-div" :style="mainContentDivVars">
 
       <p>Welcome, <span style="font-weight: bold">{{ this.$parent.$data.userId}} </span></p>
       <p>Click below to browse your Spotify playlists</p>
@@ -23,6 +23,14 @@ export default {
   components: {
     GreenBtn
   },
+  computed: {
+      mainContentDivVars() {
+          return {
+              '--width-css': this.$parent.$data.mainContentDivWidth + '%',
+              '--left-position-css': ( ( 50 -  this.$parent.$data.mainContentDivWidth / 2) ) + '%'
+          }
+      }
+  },
   data() {
     return {
       playlists: []
@@ -41,9 +49,8 @@ export default {
   .main-content-div {
     padding: 40px 25px;
     position: fixed;
-    left: 30%; /* 50% - width/2 */
-    width: 40%;
-    /* transform: translate(-50%,-50%); */
+    width: var(--width-css);
+    left: var(--left-position-css);
   }
   
   h2, p {
