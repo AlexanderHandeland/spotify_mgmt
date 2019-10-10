@@ -2,7 +2,8 @@
   <div class="home">
     <div class="main-content-div">
 
-      <h2>Access your Spotify playlists</h2>
+      <p>Welcome, <span style="font-weight: bold">{{ this.$parent.$data.userId}} </span></p>
+      <p>Click below to browse your Spotify playlists</p>
 
       <GreenBtn v-on:button-click="goToPlaylists">Get playlists</GreenBtn>
     </div> 
