@@ -9,6 +9,7 @@
 <script>
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { isMobile } from 'mobile-device-detect';
 
 import axios from 'axios'
 
@@ -26,7 +27,7 @@ export default {
 /*
       authenticated: true,
       userId: 'AlexHandeland',
-      token: 'BQA810uw7EXTIJxelONvBJJ-8ZAuxyg8AVaL0Ed0BwL0ybywV6kCj552PrCnz4b6z1COGwrjKxrGiSoHkm12TNvMI1eiGBMt1_8TMD_HHHRXUnjP2AS1zz4AL53tqZBlPDP1o_iBnwRL-FHQFil_dd-VEvtjmyM9jBD0AQ',
+      token: 'BQDhJ5z6yIJvFbFJuJWPv8zr-kN1LNWWzlN3UMhTwypBD2gbT-xfSWiUIqFm_HHvx2kLmfzWFtTENSRz6KeP7s0alNNMsRtPkZGQtO61oBsGdFP4cfdR9vH54gUyZ_FY7uyeuiJewNHocJEsg6AsXdUcYjYqNteHv1g8lg',
 */  
       authenticated: false,
       userId: '',
@@ -35,7 +36,8 @@ export default {
       playlistTitle: '',
 
       // CSS VARIABLES
-      mainContentDivWidth: 40 // in percent
+      // set width to 100% if on mobile, else 60
+      mainContentDivWidth: isMobile ? 100 : 60 // in percent
     }
   },
   mounted() {

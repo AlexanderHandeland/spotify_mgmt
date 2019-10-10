@@ -1,6 +1,6 @@
 <template>
   <div class="playlist">
-    <div class="playlist-div">
+    <div class="playlist-div" :style="mainContentDivVars">
       <PlaylistHeader 
         v-bind:playlistTitle="playlistTitle"
         v-on:sort-song-title-toggle="sortSongTitleToggle"
@@ -37,6 +37,14 @@ export default {
     PlaylistHeader,
     Songs,
     PlaylistFooter
+  },
+  computed: {
+      mainContentDivVars() {
+          return {
+              '--width-css': this.$parent.$data.mainContentDivWidth + '%',
+              '--left-position-css': ( ( 50 -  this.$parent.$data.mainContentDivWidth / 2) ) + '%'
+          }
+      }
   },
   data() {
     return {
@@ -211,11 +219,9 @@ export default {
   .playlist-div {
     padding: 50px 25px; /* padding top 50px slightly higher due to solid colored background*/ 
     position: fixed;
-    /* top: 50%; */
-    left: 20%; /* 50% - width/2 */
-    /* transform: translate(-50%,-50%); */
-
-    width: 60%;
-    min-width: 40%;
+    
+    width: var(--width-css);
+    left: var(--left-position-css);
+    /* min-width: 40%; */
   }
 </style>
