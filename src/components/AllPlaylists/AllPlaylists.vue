@@ -31,6 +31,7 @@ export default {
 <style scoped>
     .playlist-list {
         max-height: 60vh;
-        overflow: auto;
+        /* overflow: auto; */
+        overflow-x: hidden;
     }
 </style>

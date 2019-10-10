@@ -45,7 +45,7 @@ export default {
         position: fixed;
         top: 0;
         width: 100%;
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid var(--spotify-green);
     }
 
     .header a {
@@ -68,6 +68,6 @@ export default {
     }
     
     .header a:hover {
-        background: var(--playlist-hover-gray);
+        background: var(--spotify-dark-green);
     }
 </style>

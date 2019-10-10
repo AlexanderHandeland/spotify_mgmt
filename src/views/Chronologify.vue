@@ -1,18 +1,20 @@
 <template>
     <div class="chrono">
-        <div class="main-content-div">
+        <div class="main-content-div" :style="mainContentDivVars">
             <div class="search-div" v-if="searchDivFlag">
-                <h2>Chin qui</h2>
-                <p>Not done, work in progress ai</p> <br/> <br/>
-                <div class="find-artist-div">
+                <!-- <h2>Chin qui</h2>
+                <p>Work in progress</p> <br/> <br/>
+                
+                <h2>Concept</h2>
+                <p>Search artist > Filter album type > Create playlist with that artist's albums in chronological order</p> <br/> <br/> -->
+
+                <div class="secondary-content-div">
                     <SearchArtistComponent
                         v-on:update-artist-search="updateArtistSearch"
                         v-on:search-for-artist="searchForArtist"
-                    />
-
-                    <SearchArtistResultsComponent
-                        v-bind:artistsResult="artistsResult"
                         v-on:select-artist="selectArtist"
+                        v-bind:artistsResult="artistsResult"
+                        v-bind:selectedArtistId="artistId"
                     />
 
                 </div>
@@ -48,7 +50,6 @@
 import AlbumTypesComponent from '@/components/Chronologify/AlbumTypes'
 import AlbumResults from '@/components/Chronologify/AlbumResults'
 import SearchArtistComponent from '@/components/Chronologify/SearchArtistComponent'
-import SearchArtistResultsComponent from '@/components/Chronologify/SearchArtistResultsComponent'
 import ChronologifyHeader from '@/components/Chronologify/ChronologifyHeader'
 import ChronologifyFooter from '@/components/Chronologify/ChronologifyFooter'
 import GreenBtn from '@/components/Mics/GreenBtn'
@@ -60,18 +61,25 @@ export default {
     name: 'chronologify',
     components: {
         SearchArtistComponent,
-        SearchArtistResultsComponent,
         AlbumTypesComponent,
         AlbumResults,
         ChronologifyHeader,
         ChronologifyFooter,
         GreenBtn
     },
+    computed: {
+        mainContentDivVars() {
+            return {
+                '--width-css': this.$parent.$data.mainContentDivWidth + '%',
+                '--left-position-css': ( ( 50 -  this.$parent.$data.mainContentDivWidth / 2) ) + '%'
+            }
+        }
+    },
     data() {    
         return {
             // Search info
             artistName: '',
-            artistId: '',
+            artistId: null,
 
             // Artist search result
             artistsResult: [],
@@ -110,7 +118,7 @@ export default {
             if (this.artistName != '') {
                 axios.get('https://api.spotify.com/v1/search', {
                     headers: {
-                    Authorization: 'Bearer ' + this.$parent.$data.token
+                        Authorization: 'Bearer ' + this.$parent.$data.token
                     },
                     params: {
                         'q': this.artistName,
@@ -126,10 +134,9 @@ export default {
             
         },
 
-        selectArtist: function(id, name) {
+        selectArtist: function(id) {
             this.artistId = id;
             this.artistName = name;
-            console.log('Selected ID: ' + id);
         },
 
         updateIncludeGroups: function(albumType, flag) {
@@ -196,47 +203,17 @@ export default {
 </script>
 
 <style scoped>
-    .chrono {
-        /* background: var(--spotify-black); */
-        color: white;
+    .main-content-div {
+        /* padding: 60px 25px; */
         padding: 40px 25px;
-        width: 100%;
-        min-height: 80vh;
-        text-align: center;
-        user-select: none;
-        /* border-bottom: 1px #ccc solid; */
-    }
-
-    .search-div {
-        text-align: left;
-    }
-    
-    .search-artist-button {
-        background-color: var(--spotify-dark-green);
-        border: none;
-        color: white;
-        padding: 10px;
-        margin: 10px 20px;
-        text-align: center;
-        font-size: 10px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        user-select: none;
-        /* display: inline-block; */
-        cursor: pointer;
+        position: fixed;
+        width: var(--width-css);
+        left: var(--left-position-css);
+        text-align: left;       
     }
 
     .search-artist-button:focus {
         outline-color: white;
     }
-
-    .main-content-div {
-        /* padding: 60px 25px; */
-        position: absolute;
-        top: 35%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        
-
-    }
+    
 </style>

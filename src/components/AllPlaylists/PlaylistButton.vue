@@ -43,6 +43,9 @@ export default {
         width: 300px;
         cursor: pointer;
         user-select: none;
+        overflow-y: hidden;
+        min-height: 25px; /* Smaller than padding-y * 2 + fontsize = 8*2 + 10 = 26 */
+        max-height: 30px; /*  Larger than padding-y * 2 + fontsize = 8*2 + 10 = 26 */
     }
 
     .single-playlist-button:hover {

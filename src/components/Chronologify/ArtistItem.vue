@@ -1,13 +1,11 @@
 <template>
-<!-- implement better select artist functionality
-    kravspesifiser først -->
-    <!-- <div class='artist-item' @click="$emit('select-artist', artist.id, artist.name);"> -->
-    <div class='artist-item' @click="$emit('select-artist', artist.id)" >
+    <div class='artist-item' @click="$emit('select-artist', artist.id) " >
         <ul>
             <li>
                 {{ artist.name }}
             </li>
         </ul>
+
     </div>
 </template>
 
@@ -15,38 +13,22 @@
 <script>
 export default {
     name: 'ArtistItem',
-    props: ['artist', 'selectFlag'],
-    data() {
-        return {
-            // selectFlag: false
-        }
-    }
+    props: ['artist']
 }
 </script>
 
+
 <style scoped>
     .artist-item {
-        background: var(--playlist-backdrop-gray);
-        padding: 10px;
-        border-bottom: var(--spotify-black) 1px solid;
-        user-select: none;
+        font-size: 14px;
+        padding: 8px;
+        background-color: var(--playlist-backdrop-gray);
     }
 
     .artist-item:hover {
-        background: var(--playlist-hover-gray);
+        /* color: var(--spotify-green); */
+        background-color: var(--playlist-hover-gray);
         cursor: pointer;
     }
-
-    .artist-item li {
-        margin: 0;
-        list-style-type: none;
-        display: inline-block;
-        width: 50%;
-        text-align: left;
-        font-size: 14px;
-    }
     
-    /* .selected {
-        background: var(--spotify-dark-green);
-    } */
 </style>

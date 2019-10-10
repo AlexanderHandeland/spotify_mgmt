@@ -1,6 +1,6 @@
 <template>
     <div class="playlists">
-        <div class="main-content-div">
+        <div class="main-content-div" :style="mainContentDivVars">
             <h2>Select a playlist</h2>
 
             <AllPlaylists
@@ -27,49 +27,57 @@ export default {
     AllPlaylists,
     GreenBtn
   },
+  computed: {
+    mainContentDivVars() {
+      return {
+        '--width-css': this.$parent.$data.mainContentDivWidth + '%',
+        '--left-position-css': ( ( 50 -  this.$parent.$data.mainContentDivWidth / 2) ) + '%'
+      }
+    }
+  },
   data() {
     return {
         playlists: [],
         nextUrl: '',
         remainingPlaylists: 0
-        }
+    }
+  },
+  mounted() {
+    // API call to get all playlists of user
+      axios.get('https://api.spotify.com/v1/users/' + this.$parent.$data.userId + '/playlists', {
+          headers: {
+              Authorization: 'Bearer ' + this.$parent.$data.token
+          }
+      })
+      .then(res => {
+          this.playlists = res.data.items;
+          this.nextUrl = res.data.next; 
+          this.remainingPlaylists = res.data.total - res.data.items.length;
+          })
+      .catch(err => console.log(err));
+  },
+  methods: {
+    getSinglePlaylist: function(id, name) {
+      this.$parent.$data.playlistTitle = name;
+      this.$router.push({ name: 'playlist', params: {id} });      
     },
-    mounted() {
-      // API call to get all playlists of user
-        axios.get('https://api.spotify.com/v1/users/' + this.$parent.$data.userId + '/playlists', {
-            headers: {
-                Authorization: 'Bearer ' + this.$parent.$data.token
-            }
+    loadPlaylistsRecursive: function() {
+      if (this.nextUrl !== null) {
+        axios.get(this.nextUrl, {
+          headers: {
+            Authorization: 'Bearer ' + this.$parent.$data.token
+          }
         })
         .then(res => {
-            this.playlists = res.data.items;
-            this.nextUrl = res.data.next; 
-            this.remainingPlaylists = res.data.total - res.data.items.length;
-            })
-        .catch(err => console.log(err));
-    },
-    methods: {
-      getSinglePlaylist: function(id, name) {
-        this.$parent.$data.playlistTitle = name;
-        this.$router.push({ name: 'playlist', params: {id} });      
-      },
-      loadPlaylistsRecursive: function() {
-        if (this.nextUrl !== null) {
-          axios.get(this.nextUrl, {
-            headers: {
-              Authorization: 'Bearer ' + this.$parent.$data.token
-            }
-          })
-          .then(res => {
-            this.playlists.push(...res.data.items);
-            this.nextUrl = res.data.next;
-            this.loadPlaylistsRecursive();
-            this.remainingPlaylists = 0;
-          })
-          .catch(err => console.log(err))
-        }
+          this.playlists.push(...res.data.items);
+          this.nextUrl = res.data.next;
+          this.loadPlaylistsRecursive();
+          this.remainingPlaylists = 0;
+        })
+        .catch(err => console.log(err))
       }
     }
+  }
 }
 </script>
 
@@ -78,9 +86,9 @@ export default {
   .main-content-div {
     padding: 40px 25px;
     position: fixed;
-    width: 20%;
-    left: 40%; /* 50% - width/2 */
-    
+    width: var(--width-css);
+    left: var(--left-position-css);
+     /* 50% - width/2 */
     /* transform: translate(-50%,-50%); */ 
   }
   

@@ -20,20 +20,22 @@ export default {
   },
   data() {
     return {
+      // USER VARIABLES
       // Change to true/AlexHandeland/{token} when testing
       // Change to false/''/'' when done testing
-
-      
-/*    
-      authenticated: false,
+/*  
+      authenticated: true,
       userId: 'AlexHandeland',
-      token: 'BQBQ25iDgnPR7xNUbKQislDFw1armahI--pueGOwy3hxLfw4RFTIM8y_kNIIWrfvVZoXXsLXD-S5ZSnlNPEvBapQBQ931N18GR13GJ1_kIS4_ppZlM3-t2VPA0avhVDHgeHxaHrKD2GQZKyKgKCO3MQiRK1EkDojKADnHA',
+      token: 'BQAcItM_KUMYyo9IEBRlqoowhILIBnZ0QpSYGRmiRyrXxfegjhHTpAvYvhM988kqtnSKNrj4lq46HO6xsDGppVJCH-0NPCFZdNbAbNVRYBchSROrtf7N6528zsHvnV44A3PMhjF0N3u1k1GxvC00zNv5tnCqyr-dYfdXnw',
 */  
       authenticated: false,
       userId: '',
       token: '',
+  
+      playlistTitle: '',
 
-      playlistTitle: ''
+      // CSS VARIABLES
+      mainContentDivWidth: 40 // in percent
     }
   },
   mounted() {
@@ -45,7 +47,8 @@ export default {
     setAuthenticated(status, token) {
       this.authenticated = status;
       this.token = token;
-      setTimeout(() => { setUnauthenticated() }, 60000); // timeout after 50 min (* 60 sec * 1000 ms)
+      // handle unauthentication
+      // setTimeout(() => { setUnauthenticated() }, 60000); // timeout after 50 min (* 60 sec * 1000 ms)
 
       axios.get('https://api.spotify.com/v1/me', {
         headers: {
@@ -54,23 +57,12 @@ export default {
       })
         .then(res => {
           // Code for successful API request
-          console.log(res.data);
           this.userId = res.data.id;
           })
         .catch(err => console.log(err));
 
       this.$router.push({ name: 'home' });
     }
-  },
-  setUnauthenticated() {
-    console.log("unauthenticated");
-    this.authenticated = false;
-    this.token = '';
-    this.user = '';
-    // Check if this happens automatically - if not, uncomment:
-    // this.$router.replace({ name: 'login' });
-
-    // code for popup that  session has expired
   }
 }
 </script>
